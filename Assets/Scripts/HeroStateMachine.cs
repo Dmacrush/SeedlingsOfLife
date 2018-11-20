@@ -1,19 +1,94 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HeroStateMachine : MonoBehaviour
 {
-    public BaseHero hero;
+	//Reference to the Base Hero Class
+	public BaseHero heroStats;
 
+	//Enum Declaration
+	public enum TurnState
+	{
+		//State for when the bar is filling
+		PROCESSING,
+
+		//State for adding hero to a list
+		ADDTOLIST,
+
+		//State for waiting/Idle
+		WAITING,
+
+		//State for when the player is selecting an action
+		SELECTING,
+
+		//State for when the player can make performs an action
+		ACTION,
+
+		//State for death
+		DEATH,
+	}
+
+	//Enum reference
+	public TurnState currentState;
+
+	//For the Progressbar
+	private float currentCoolDown = 0;
+	private float maximumCoolDown = 5f;
+	//reference to the ProgressBar
+	public Image theProgressBar;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start()
+	{
+		//Set the current state to PROCESSING. 
+		currentState = TurnState.PROCESSING;
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
-		
+	void Update()
+	{
+		//Display current state in the console
+		Debug.Log(currentState);
+
+		switch (currentState)
+		{
+			case (TurnState.PROCESSING):
+				UpdateProgressBar();
+
+				break;
+
+			case (TurnState.ADDTOLIST):
+
+				break;
+
+			case (TurnState.WAITING):
+
+				break;
+
+			case (TurnState.SELECTING):
+
+				break;
+
+			case (TurnState.DEATH):
+
+				break;
+		}
+	}
+
+	void UpdateProgressBar()
+	{
+		//Add to the current cooldown based on the time that has past until it reaches the maximum cooldown time
+		currentCoolDown = currentCoolDown + Time.deltaTime;
+		//value for calculating the cooldown
+		float calc_cooldown = currentCoolDown / maximumCoolDown;
+		//clamp the x value between 0 and 1 of the cooldown value to represent the current progressbar
+		theProgressBar.transform.localScale = new Vector3(Mathf.Clamp(calc_cooldown,0,1),theProgressBar.transform.localScale.y,theProgressBar.transform.localScale.z);
+		//check if the current cooldown is greater than or equal to the max cooldown then...change the current state to ADDTOLIST
+		if(currentCoolDown >= maximumCoolDown)
+		{
+			currentState = TurnState.ADDTOLIST;
+		}
 	}
 }

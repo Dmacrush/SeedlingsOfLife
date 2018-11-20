@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed;
+    public float moveSpeed;
     private Vector3 input;
-    private Vector3 velocity;
+    private Vector3 playerVelocity;
 
     private Rigidbody rb;
 
@@ -18,12 +18,12 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         input = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-        velocity = input * speed;
+        playerVelocity = input * moveSpeed;
     }
 
     void FixedUpdate()
     {
-        rb.velocity = velocity;
+        rb.velocity = playerVelocity;
 
 
         /*
