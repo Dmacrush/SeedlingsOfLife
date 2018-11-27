@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class HeroStateMachine : MonoBehaviour
 {
+	private BattleStateMachine BSM;
 	//Reference to the Base Hero Class
 	public BaseHero heroStats;
 
@@ -42,8 +43,12 @@ public class HeroStateMachine : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+		//Find the battle manager
+		BSM = GameObject.Find("BattleManager").GetComponent<BattleStateMachine>();
 		//Set the current state to PROCESSING. 
 		currentState = TurnState.PROCESSING;
+		
+
 	}
 
 	// Update is called once per frame
@@ -60,11 +65,14 @@ public class HeroStateMachine : MonoBehaviour
 				break;
 
 			case (TurnState.ADDTOLIST):
-
+				//Add whichever hero is currently selected to the HerosToManage List.
+				BSM.HerosToManage.Add(this.gameObject);
+				//set the current state to turnstate.WAITING
+				currentState = TurnState.WAITING;
 				break;
 
 			case (TurnState.WAITING):
-
+				//idle state
 				break;
 
 			case (TurnState.SELECTING):
