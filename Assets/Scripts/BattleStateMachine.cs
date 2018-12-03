@@ -39,28 +39,38 @@ public class BattleStateMachine : MonoBehaviour
 	public HeroGUI HeroInput;
 
 	public List<GameObject> HerosToManage = new List<GameObject>();
-	
+
 	private HandleTurns HeroChoice;
 	//The reference to the enemy button
 	public GameObject enemyButton;
 	//Spacer object transform
 	public Transform Spacer;
+	//Attack panel reference
+	public GameObject AttackPanel;
+	//Enemy select panel reference
+	public GameObject EnemySelectPanel;
 
 
 	// Use this for initialization
-	void Start ()
+	void Start()
 	{
 		battleStates = PerformAction.WAIT;
 		//Find current enemies in the game with the range of a list with the tag of enemy
 		EnemiesInBattle.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
 		//Find current enemies in the game with the range of a list with the tag of enemy
 		HerosInBattle.AddRange(GameObject.FindGameObjectsWithTag("Hero"));
+		//Set the heros input state to activate
+		HeroInput = HeroGUI.ACTIVATE;
+		//set the attack panel to false
+		AttackPanel.SetActive(false);
+		//set the enemy select panel to false
+		EnemySelectPanel.SetActive(false);
 		//Call the Enemy button function
 		EnemyButtons();
 	}
-	
+
 	// Update is called once per frame
-	void Update ()
+	void Update()
 	{
 		switch (battleStates)
 		{
@@ -72,6 +82,7 @@ public class BattleStateMachine : MonoBehaviour
 				}
 
 				break;
+
 
 			case (PerformAction.TAKEACTION):
 				//Find the first game object in the list of attackers by name.
@@ -89,17 +100,49 @@ public class BattleStateMachine : MonoBehaviour
 				//Check if the attacker is of the type Hero
 				if (PerformList[0].Type == "Hero")
 				{
-					
-					
+					Debug.Log("Hero is here to perform");
+
 				}
 				battleStates = PerformAction.PERFORMACTION;
 				break;
 
 			case (PerformAction.PERFORMACTION):
 
-			break;
+				break;
+		}
+
+		switch (HeroInput)
+		{
+			case (HeroGUI.ACTIVATE):
+				//check if the heros to manage count is greater than zero then
+				if (HerosToManage.Count > 0)
+				{
+					//find the first hero in the list and ensure this is the first active hero
+					HerosToManage[0].transform.Find("Selector").gameObject.SetActive(true);
+					HeroChoice = new HandleTurns();
+					//Set the attack panel visibility to true
+					AttackPanel.SetActive(true);
+					//set the hero input to the Hero game ui state waiting
+					HeroInput = HeroGUI.WAITING;
+				}
+				break;
+
+
+			case (HeroGUI.WAITING):
+				//idle
+				break;
+				
+			case (HeroGUI.DONE):
+			HeroInputDone();
+				break;
+			
 		}
 	}
+
+
+
+
+
 	public void CollectActions(HandleTurns input)
 	{
 		PerformList.Add(input);
@@ -126,5 +169,41 @@ public class BattleStateMachine : MonoBehaviour
 			//Set the button that is instantiated by grabbing the spacers transform
 			newButton.transform.SetParent(Spacer, false);
 		}
+	}
+
+	public void Input1()//player attack button
+	{
+		//get the hero attackers name
+		HeroChoice.Attacker = HerosToManage[0].name;
+		//
+		HeroChoice.AttackersGameObject = HerosToManage[0];
+		//
+		HeroChoice.Type = "Hero";
+		//set the attack panel visibility to false
+		AttackPanel.SetActive(false);
+		//set the enemy select panel to true, to choose which enemy to attack
+		EnemySelectPanel.SetActive(true);
+	}
+
+	public void Input2(GameObject chosenEnemy)//enemy selection
+	{
+		//get the enemy that has been selected
+		HeroChoice.AttackersTarget = chosenEnemy;
+		//set the current hero input state to done(player has finished their turn)
+		HeroInput = HeroGUI.DONE;
+	}
+
+	void HeroInputDone()
+	{
+		//Add the players action to the perform list
+		PerformList.Add(HeroChoice);
+		//set the enemyselect panel visibility to false
+		EnemySelectPanel.SetActive(false);
+		//
+		HerosToManage[0].transform.Find("Selector").gameObject.SetActive(false);
+		//remove the first hero from the list
+		HerosToManage.RemoveAt(0);
+		//set the heroGUI state to  activate to check if there are any more heros in the list to take a turn
+		HeroInput = HeroGUI.ACTIVATE;
 	}
 }

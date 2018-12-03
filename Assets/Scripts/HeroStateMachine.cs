@@ -39,10 +39,16 @@ public class HeroStateMachine : MonoBehaviour
 	private float maximumCoolDown = 5f;
 	//reference to the ProgressBar
 	public Image theProgressBar;
+	//Selector Reference
+	public GameObject Selector;
 
 	// Use this for initialization
 	void Start()
 	{
+		//set the current cooldown to a random range to add randomness to the progress bars (can use luck stat to alter/speed stat
+		currentCoolDown = Random.Range(0, 2.5f);
+		//set the current selector to false
+		Selector.SetActive(false);
 		//Find the battle manager
 		BSM = GameObject.Find("BattleManager").GetComponent<BattleStateMachine>();
 		//Set the current state to PROCESSING. 
