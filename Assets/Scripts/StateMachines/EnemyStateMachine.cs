@@ -13,41 +13,35 @@ public class EnemyStateMachine : MonoBehaviour
 	{
 		//State for when the bar is filling
 		PROCESSING,
-
 		//Choose an action to perform
 		CHOOSEACTION,
-
 		//State for adding hero to a list
 		ADDTOLIST,
-
 		//State for waiting/Idle
 		WAITING,
-
-		//State for when the player can make performs an action
+		//State for when the enemy performs an action
 		ACTION,
-
 		//State for death
 		DEATH,
 	}
 
 	//Enum reference
 	public TurnState currentState;
-
-	//For the Progressbar
+	//current cooldown for the Progressbar
 	private float currentCoolDown = 0;
-
+	//maximum cooldown for the ProgressBar
 	private float maximumCoolDown = 5f;
-
 	//This gameObject references
 	private Vector3 startPosition;
-
+	//Selector Reference
+	public GameObject Selector;
 	//tiemforactionstuff
 	private bool actionStarted = false;
-
 	//Reference to the targetted hero (enemy target -----> hero)
 	public GameObject HeroToAttack;
 	//Animation speed
-	private float animSpeed = 5f;
+	private float animSpeed = 10f;
+
 
 
 
@@ -57,6 +51,8 @@ public class EnemyStateMachine : MonoBehaviour
 	{
 		//Set the current state to PROCESSING. 
 		currentState = TurnState.PROCESSING;
+		//set the current selector to false
+		Selector.SetActive(false);
 		//Find the battle manager then get the battle state machine component
 		BSM = GameObject.Find("BattleManager").GetComponent<BattleStateMachine>();
 		startPosition = transform.position;
@@ -108,15 +104,21 @@ public class EnemyStateMachine : MonoBehaviour
 	{
 		HandleTurns myAttack = new HandleTurns();
 		//find the attacker and get their name
-		myAttack.Attacker = enemy.name;
+		myAttack.Attacker = enemy.theName;
 		myAttack.Type = "Enemy";
 		//Set the attacker gameobject to this gameObject
 		myAttack.AttackersGameObject = this.gameObject;
 		//Get a random enemy target in a range from the list and choose a random action
 		myAttack.AttackersTarget = BSM.HerosInBattle[Random.Range(0, BSM.HerosInBattle.Count)];
+		//perform a random attack assigned to the enemy attacks list
+		int num = Random.Range(0, enemy.attacks.Count);
+		//pass the attack into baseAttack class with the chosen number
+		myAttack.chosenAttack = enemy.attacks[num];
+		//print the attack being done with the name of the attacker, the ability name, the damage to console.
+		Debug.Log(this.gameObject.name + "has chosen to use" + myAttack.chosenAttack.attackName + "and did" + myAttack.chosenAttack.attackDamage + "damage!");
+
 		//Set the Battle state machine to use myAttack
 		BSM.CollectActions(myAttack);
-
 	}
 
 	private IEnumerator TimeforAction()
@@ -138,7 +140,7 @@ public class EnemyStateMachine : MonoBehaviour
 		//wait for an amount of time
 		yield return new WaitForSeconds(0.5f);
 		//Do damage
-
+		DoDamage();
 		//animate back to the start position
 		Vector3 initialPosition = startPosition;
 		while (MoveTowardsInitialPosition(initialPosition))
@@ -164,6 +166,14 @@ public class EnemyStateMachine : MonoBehaviour
 	private bool MoveTowardsInitialPosition(Vector3 target)
 	{
 		return target != (transform.position = Vector3.MoveTowards(transform.position, target, animSpeed * Time.deltaTime));
+	}
+
+	void DoDamage()
+	{
+		//add the enemies current attack to the chosen attack, when its added to the perform action list.
+		float calc_damage = enemy.curATK + BSM.PerformList[0].chosenAttack.attackDamage;
+		//Apply the damage to the hero that has been attacked based on the calc damage
+		HeroToAttack.GetComponent<HeroStateMachine>().TakeDamage(calc_damage);
 	}
 }
 

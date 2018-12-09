@@ -92,15 +92,38 @@ public class BattleStateMachine : MonoBehaviour
 				{
 					//Get the Enemy state machine component and make it a variable
 					EnemyStateMachine ESM = performer.GetComponent<EnemyStateMachine>();
-					//find the first target in the list of heros and set that as the target
-					ESM.HeroToAttack = PerformList[0].AttackersTarget;
-					//Set the enemy state machine state to take a action
-					ESM.currentState = EnemyStateMachine.TurnState.ACTION;
+					//check if the currently attacked hero is in the battle list
+					for (int i = 0; i < HerosInBattle.Count; i++)
+					{
+						if (PerformList[0].AttackersTarget == HerosInBattle[i])
+						{
+							//find the first target in the list of heros and set that as the target
+							ESM.HeroToAttack = PerformList[0].AttackersTarget;
+							//Set the enemy state machine state to take a action
+							ESM.currentState = EnemyStateMachine.TurnState.ACTION;
+							break;
+						}
+						else
+						{
+							//choose another hero from the target list from the heros in battle
+							PerformList[0].AttackersTarget = HerosInBattle[Random.Range(0, HerosInBattle.Count)];
+							//find the first target in the list of heros and set that as the target
+							ESM.HeroToAttack = PerformList[0].AttackersTarget;
+							//Set the enemy state machine state to take a action
+							ESM.currentState = EnemyStateMachine.TurnState.ACTION;
+						}
+					}
 				}
 				//Check if the attacker is of the type Hero
 				if (PerformList[0].Type == "Hero")
 				{
-					Debug.Log("Hero is here to perform");
+					//Get the hero state machine component
+					HeroStateMachine HSM = performer.GetComponent<HeroStateMachine>();
+					//Add the enemy to attack to the list of performers based on the targetted enemy
+					HSM.EnemyToAttack = PerformList[0].AttackersTarget;
+					//Set the current state in the hero state machine to action
+					HSM.currentState = HeroStateMachine.TurnState.ACTION;
+					//Debug.Log("Hero is here to perform");
 
 				}
 				battleStates = PerformAction.PERFORMACTION;
@@ -162,7 +185,7 @@ public class BattleStateMachine : MonoBehaviour
 			//create a buttonText variable find the text component in the game object
 			Text buttonText = newButton.transform.Find("E1Text").gameObject.GetComponent<Text>();
 			//find the selected enemys name and store it in the buttonText variable
-			buttonText.text = cur_enemy.enemy.name;
+			buttonText.text = cur_enemy.enemy.theName;
 			//Pass the content needed for when in battle
 			button.enemyPrefab = enemy;
 

@@ -1,0 +1,259 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class HeroStateMachine : MonoBehaviour
+{
+	private BattleStateMachine BSM;
+
+	//Reference to the Base Hero Class
+	public BaseHero heroStats;
+
+	//Enum Declaration
+	public enum TurnState
+	{
+		//State for when the bar is filling
+		PROCESSING,
+
+		//State for adding hero to a list
+		ADDTOLIST,
+
+		//State for waiting/Idle
+		WAITING,
+
+		//State for when the player can performs an action
+		ACTION,
+
+		//State for death
+		DEATH,
+	}
+
+	//Enum reference
+	public TurnState currentState;
+
+	//For the Progressbar
+	private float currentCoolDown = 0;
+
+	private float maximumCoolDown = 5f;
+
+	//reference to the ProgressBar
+	private Image theProgressBar;
+
+	//Selector Reference
+	public GameObject Selector;
+
+	//IEnumerator
+	public GameObject EnemyToAttack;
+
+	//bool for action started
+	private bool actionStarted = false;
+
+	//player start position
+	private Vector3 startPosition;
+
+	//animation speed
+	private float animSpeed = 10f;
+
+	//bool for player alive
+	private bool playerIsAlive = true;
+	//hero panel references
+	private HeroPanelStats stats;
+	public GameObject heroPanel;
+	private Transform heroPanelSpacer;
+
+	// Use this for initialization
+	void Start()
+	{
+		//find the spacer object in the scene
+		heroPanelSpacer = GameObject.Find("BattleCanvas").transform.Find("HeroPanel").transform.Find("HeroPanelSpacer");
+		//create the panel and fill it with info with the corresponding hero stats
+		CreateHeroPanel();
+
+		//set the players transform to the startPositon
+		startPosition = transform.position;
+		//set the current cooldown to a random range to add randomness to the progress bars (can use luck stat to alter/speed stat
+		currentCoolDown = Random.Range(0, 2.5f);
+		//set the current selector to false
+		Selector.SetActive(false);
+		//Find the battle manager
+		BSM = GameObject.Find("BattleManager").GetComponent<BattleStateMachine>();
+		//Set the current state to PROCESSING. 
+		currentState = TurnState.PROCESSING;
+
+
+	}
+
+	// Update is called once per frame
+	void Update()
+	{
+		//Display current state in the console
+		Debug.Log(currentState);
+
+		switch (currentState)
+		{
+			case (TurnState.PROCESSING):
+				UpdateProgressBar();
+
+				break;
+
+			case (TurnState.ADDTOLIST):
+				//Add whichever hero is currently selected to the HerosToManage List.
+				BSM.HerosToManage.Add(this.gameObject);
+				//set the current state to turnstate.WAITING
+				currentState = TurnState.WAITING;
+				break;
+
+			case (TurnState.WAITING):
+				//idle state
+				break;
+
+			case (TurnState.ACTION):
+				//start the coroutine for performing an action
+				StartCoroutine(TimeforAction());
+				break;
+
+			case (TurnState.DEATH):
+				if (!playerIsAlive)
+				{
+					return;
+				}
+				else
+				{
+					//change the tag of the hero
+					this.gameObject.tag = "DeadHero";
+					//the player is not attackable by the enemy
+					BSM.HerosInBattle.Remove(this.gameObject);
+					//the player is no longer manageable
+					BSM.HerosToManage.Remove(this.gameObject);
+					//deactivate the selector
+					Selector.SetActive(false);
+					//reset the GUI
+					BSM.AttackPanel.SetActive(false);
+					BSM.EnemySelectPanel.SetActive(false);
+					//remove the object from the perform list
+					for (int i = 0; i < BSM.PerformList.Count; i++)
+					{
+						if (BSM.PerformList[i].AttackersGameObject == this.gameObject)
+						{
+							BSM.PerformList.Remove(BSM.PerformList[i]);
+						}
+					}
+					//change the colour of the player / play the death animation
+					this.gameObject.GetComponent<MeshRenderer>().material.color = new Color32(105,105,105,255);
+					//reset the players input
+					BSM.HeroInput = BattleStateMachine.HeroGUI.ACTIVATE;
+					playerIsAlive = false;
+
+					
+
+				}
+				break;
+		}
+	}
+
+	void UpdateProgressBar()
+	{
+		//Add to the current cooldown based on the time that has past until it reaches the maximum cooldown time
+		currentCoolDown = currentCoolDown + Time.deltaTime;
+		//value for calculating the cooldown
+		float calc_cooldown = currentCoolDown / maximumCoolDown;
+		//clamp the x value between 0 and 1 of the cooldown value to represent the current progressbar
+		theProgressBar.transform.localScale = new Vector3(Mathf.Clamp(calc_cooldown, 0, 1),
+			theProgressBar.transform.localScale.y, theProgressBar.transform.localScale.z);
+		//check if the current cooldown is greater than or equal to the max cooldown then...change the current state to ADDTOLIST
+		if (currentCoolDown >= maximumCoolDown)
+		{
+			currentState = TurnState.ADDTOLIST;
+		}
+	}
+
+	private IEnumerator TimeforAction()
+	{
+		//Check if an action has already started
+		if (actionStarted)
+		{
+			//Stop the coroutine here
+			yield break;
+		}
+		//Otherwise set actionStarted bool to true
+		actionStarted = true;
+		//animate the player near the enemy to attack the targetted enemy, increase the targets.X position
+		Vector3 enemyPosition = new Vector3(EnemyToAttack.transform.position.x + 1.5f, EnemyToAttack.transform.position.y,
+			EnemyToAttack.transform.position.z);
+		while (MoveTowardsEnemy(enemyPosition))
+		{
+			yield return null;
+		}
+		//wait for an amount of time
+		yield return new WaitForSeconds(0.5f);
+		//Do damage
+
+		//animate back to the start position
+		Vector3 initialPosition = startPosition;
+		while (MoveTowardsInitialPosition(initialPosition))
+		{
+			yield return null;
+		}
+		//remove the performer from the list in the Battle State Machine so the next enemy can attack
+		BSM.PerformList.RemoveAt(0);
+		//Reset the battle state machine -> Wait
+		BSM.battleStates = BattleStateMachine.PerformAction.WAIT;
+
+		actionStarted = false;
+		//reset the enemy state
+		currentCoolDown = 0;
+		//set the current state to turn state.PROCESSING
+		currentState = TurnState.PROCESSING;
+	}
+
+	private bool MoveTowardsEnemy(Vector3 target)
+	{
+		return target != (transform.position = Vector3.MoveTowards(transform.position, target, animSpeed * Time.deltaTime));
+	}
+
+	private bool MoveTowardsInitialPosition(Vector3 target)
+	{
+		return target != (transform.position = Vector3.MoveTowards(transform.position, target, animSpeed * Time.deltaTime));
+	}
+
+	public void TakeDamage(float getDamageAmount)
+	{
+		//apply the damage to the hero based on the getDamageAmount
+		heroStats.curHp -= getDamageAmount;
+		//check if the current hero is dead
+		if (heroStats.curHp <= 0)
+		{
+			heroStats.curHp = 0;
+			currentState = TurnState.DEATH;
+		}
+		UpdateHeroPanel();
+	}
+	//create a hero panel
+	void CreateHeroPanel()
+	{
+		//spawn the hero panel as a game object
+		heroPanel = Instantiate(heroPanel) as GameObject;
+		//get the hero panel stats script attached to the stats object
+		stats = heroPanel.GetComponent<HeroPanelStats>();
+		//display the current hero name
+		stats.heroName.text = heroStats.theName;
+		//display the current hero hp
+		stats.heroHP.text = "HP: " + heroStats.curHp;
+		//display the current hero mp
+		stats.heroMP.text = "MP: " + heroStats.curMp;
+		//display the current progress bar
+		theProgressBar = stats.progressBar;
+		//set the hero panel to the parent spacer panel game object without changing the local scale.
+		heroPanel.transform.SetParent(heroPanelSpacer, false);
+	}
+	//Update the stats/values in the hero panel when the player takes damage, uses abilities etc
+	void UpdateHeroPanel()
+	{
+		//display the current hero hp
+		stats.heroHP.text = "HP: " + heroStats.curHp;
+		//display the current hero mp
+		stats.heroMP.text = "MP: " + heroStats.curMp;
+	}
+}
+
