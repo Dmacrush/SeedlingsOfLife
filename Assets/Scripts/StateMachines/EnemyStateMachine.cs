@@ -175,5 +175,19 @@ public class EnemyStateMachine : MonoBehaviour
 		//Apply the damage to the hero that has been attacked based on the calc damage
 		HeroToAttack.GetComponent<HeroStateMachine>().TakeDamage(calc_damage);
 	}
+
+	public void TakeDamage(float getDamageAmount) // Enemy takes damage from the hero
+	{
+		//Take the inputted damage from the enemies hp
+		enemy.curHp -= getDamageAmount;
+		//Check if it the enemies current HP is less than equal to 0
+		if (enemy.curHp <= 0)
+		{
+			//Set the enemys hp to 0
+			enemy.curHp = 0;
+			//Set the enemies turn state to DEATH.
+			currentState = TurnState.DEATH;
+		}
+	}
 }
 

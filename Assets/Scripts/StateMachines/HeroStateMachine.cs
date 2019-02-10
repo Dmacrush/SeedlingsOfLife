@@ -188,7 +188,7 @@ public class HeroStateMachine : MonoBehaviour
 		//wait for an amount of time
 		yield return new WaitForSeconds(0.5f);
 		//Do damage
-
+		DoDamage();
 		//animate back to the start position
 		Vector3 initialPosition = startPosition;
 		while (MoveTowardsInitialPosition(initialPosition))
@@ -228,6 +228,15 @@ public class HeroStateMachine : MonoBehaviour
 			currentState = TurnState.DEATH;
 		}
 		UpdateHeroPanel();
+	}
+
+	//Do Damage function
+	void DoDamage()
+	{
+		//Calculate the damage that the hero will do from the battle state machine/ chosen attack command + the attack damage
+		float calc_Damage = heroStats.curATK + BSM.PerformList[0].chosenAttack.attackDamage;
+		//get the enemy that has been attacked, call the take damage function from the Enemy State Machine and input the damage based on the calc_damage from the Hero
+		EnemyToAttack.GetComponent<EnemyStateMachine>().TakeDamage(calc_Damage);
 	}
 	//create a hero panel
 	void CreateHeroPanel()
