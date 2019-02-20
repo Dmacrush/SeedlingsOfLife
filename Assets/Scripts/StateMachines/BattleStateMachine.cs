@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -16,7 +16,16 @@ public class BattleStateMachine : MonoBehaviour
 		TAKEACTION,
 
 		//Perform action
-		PERFORMACTION
+		PERFORMACTION,
+
+        //Checking alive
+        CHECKALIVE,
+
+        //Win state
+        WIN,
+
+        //Lose state
+        LOSE
 	}
 
 
@@ -66,10 +75,14 @@ public class BattleStateMachine : MonoBehaviour
 	//skills attacks
 	public Transform actionSpacer;
 
+    //attacks of heros
 	public Transform skillSpacer;
 	public GameObject actionButton;
 	public GameObject skillButton;
 	private List<GameObject> atkBtns = new List<GameObject>();
+
+    //enemy buttons
+    private List<GameObject> enemyBtns = new List<GameObject>(); 
 
 	// Use this for initialization
 	void Start()
@@ -152,9 +165,43 @@ public class BattleStateMachine : MonoBehaviour
 				break;
 
 			case (PerformAction.PERFORMACTION):
-
+                //Idle
 				break;
-		}
+
+            case (PerformAction.CHECKALIVE):
+                if(HerosInBattle.Count < 1)
+                {
+                    battleStates = PerformAction.LOSE;
+                    //Lose battle
+                }
+                else if(EnemiesInBattle.Count < 1)
+                {
+                    battleStates = PerformAction.WIN;
+                    //Win battle
+                }
+                else
+                {
+                    ClearAttackPanel();
+                    HeroInput = HeroGUI.ACTIVATE;
+                }
+                break;
+
+            case (PerformAction.LOSE):
+                {
+                    Debug.Log("You Lost The Battle");
+                }
+                break;
+            case (PerformAction.WIN):
+                {
+                    Debug.Log("You Won The Battle");
+                    for(int i = 0; i< HerosInBattle.Count;i++)
+                    {
+                        HerosInBattle[i].GetComponent<HeroStateMachine>().currentState = HeroStateMachine.TurnState.WAITING;
+
+                    }
+                }
+                break;
+        }
 
 		switch (HeroInput)
 		{
@@ -195,8 +242,15 @@ public class BattleStateMachine : MonoBehaviour
 		PerformList.Add(input);
 	}
 
-	void EnemyButtons()
+	public void EnemyButtons()
 	{
+        //clean up 
+        foreach(GameObject enemyBtn in enemyBtns)
+        {
+            Destroy(enemyBtn);
+        }
+        enemyBtns.Clear();
+        
 		//for each enemy in the list of enemies in battle.
 		foreach (GameObject enemy in EnemiesInBattle)
 		{
@@ -213,8 +267,10 @@ public class BattleStateMachine : MonoBehaviour
 			//Pass the content needed for when in battle
 			button.enemyPrefab = enemy;
 
+
 			//Set the button that is instantiated by grabbing the spacers transform
 			newButton.transform.SetParent(Spacer, false);
+            enemyBtns.Add(newButton);
 		}
 	}
 
@@ -246,23 +302,31 @@ public class BattleStateMachine : MonoBehaviour
 	{
 		//Add the players action to the perform list
 		PerformList.Add(HeroChoice);
-		//set the enemyselect panel visibility to false
-		EnemySelectPanel.SetActive(false);
 
-		//for each attack button(atkBTN) in the list of attack buttons (atkBtns)
-		foreach (GameObject atkBTN in atkBtns)
-		{
-			//destroy the attack button in the command window
-			Destroy(atkBTN);
-		}
-		atkBtns.Clear();
-		//
+        ClearAttackPanel();
+		
 		HerosToManage[0].transform.Find("Selector").gameObject.SetActive(false);
 		//remove the first hero from the list
 		HerosToManage.RemoveAt(0);
 		//set the heroGUI state to  activate to check if there are any more heros in the list to take a turn
 		HeroInput = HeroGUI.ACTIVATE;
 	}
+
+    void ClearAttackPanel()
+    {
+        //set the enemyselect panel visibility to false
+        EnemySelectPanel.SetActive(false);
+        AttackPanel.SetActive(false);
+        SkillPanel.SetActive(false);
+
+        //for each attack button(atkBTN) in the list of attack buttons (atkBtns)
+        foreach (GameObject atkBTN in atkBtns)
+        {
+            //destroy the attack button in the command window
+            Destroy(atkBTN);
+        }
+        atkBtns.Clear();
+    }
 
 	//create actionbuttons
 	void CreateAttackButtons()
