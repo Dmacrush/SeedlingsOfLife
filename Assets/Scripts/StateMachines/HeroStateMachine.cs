@@ -33,9 +33,9 @@ public class HeroStateMachine : MonoBehaviour
 	public TurnState currentState;
 
 	//For the Progressbar
-	private float currentCoolDown = 0;
+	public float currentCoolDown = 0;
 
-	private float maximumCoolDown = 5f;
+	public float maximumCoolDown = 5f;
 
 	//reference to the ProgressBar
 	private Image theProgressBar;
@@ -62,6 +62,7 @@ public class HeroStateMachine : MonoBehaviour
 	public GameObject heroPanel;
 	private Transform heroPanelSpacer;
 
+	// Use this for initialization
 	// Use this for initialization
 	void Start()
 	{

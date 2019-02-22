@@ -50,6 +50,8 @@ public class BattleStateMachine : MonoBehaviour
 		DONE
 	}
 
+    HeroStateMachine heroStateMachine;
+
 	public HeroGUI HeroInput;
 
 	public List<GameObject> HerosToManage = new List<GameObject>();
@@ -71,6 +73,11 @@ public class BattleStateMachine : MonoBehaviour
 	//Skill Panel reference
 	public GameObject SkillPanel;
 
+    //Win Screen
+    public GameObject WinHolder;
+
+    //Lose Screen
+    public GameObject LoseHolder;
 
 	//skills attacks
 	public Transform actionSpacer;
@@ -84,6 +91,7 @@ public class BattleStateMachine : MonoBehaviour
     //enemy buttons
     private List<GameObject> enemyBtns = new List<GameObject>(); 
 
+
 	// Use this for initialization
 	void Start()
 	{
@@ -94,14 +102,16 @@ public class BattleStateMachine : MonoBehaviour
 		HerosInBattle.AddRange(GameObject.FindGameObjectsWithTag("Hero"));
 		//Set the heros input state to activate
 		HeroInput = HeroGUI.ACTIVATE;
-		//set the attack panel to false
-		AttackPanel.SetActive(false);
+        //set the attack panel to false
+        AttackPanel.SetActive(false);
 		//set the enemy select panel to false
 		EnemySelectPanel.SetActive(false);
 		//set the skills panel to false
 		SkillPanel.SetActive(false);
 		//Call the Enemy button function
 		EnemyButtons();
+
+        heroStateMachine = FindObjectOfType<HeroStateMachine>();
 	}
 
 	// Update is called once per frame
@@ -188,11 +198,13 @@ public class BattleStateMachine : MonoBehaviour
 
             case (PerformAction.LOSE):
                 {
+                    LoseHolder.SetActive(true);
                     Debug.Log("You Lost The Battle");
                 }
                 break;
             case (PerformAction.WIN):
                 {
+                    WinHolder.SetActive(true);
                     Debug.Log("You Won The Battle");
                     for(int i = 0; i< HerosInBattle.Count;i++)
                     {
@@ -206,8 +218,8 @@ public class BattleStateMachine : MonoBehaviour
 		switch (HeroInput)
 		{
 			case (HeroGUI.ACTIVATE):
-				//check if the heros to manage count is greater than zero then
-				if (HerosToManage.Count > 0)
+                //check if the heros to manage count is greater than zero then
+                if (HerosToManage.Count > 0 && heroStateMachine.currentCoolDown >= 5f)
 				{
 					//find the first hero in the list and ensure this is the first active hero
 					HerosToManage[0].transform.Find("Selector").gameObject.SetActive(true);
@@ -302,11 +314,6 @@ public class BattleStateMachine : MonoBehaviour
 	{
 		//Add the players action to the perform list
 		PerformList.Add(HeroChoice);
-<<<<<<< HEAD
-		//set the enemy select panel visibility to false
-		EnemySelectPanel.SetActive(false);
-=======
->>>>>>> master
 
         ClearAttackPanel();
 		
@@ -317,9 +324,6 @@ public class BattleStateMachine : MonoBehaviour
 		HeroInput = HeroGUI.ACTIVATE;
 	}
 
-<<<<<<< HEAD
-	//create action buttons
-=======
     void ClearAttackPanel()
     {
         //set the enemyselect panel visibility to false
@@ -337,7 +341,6 @@ public class BattleStateMachine : MonoBehaviour
     }
 
 	//create actionbuttons
->>>>>>> master
 	void CreateAttackButtons()
 	{
 
@@ -355,14 +358,6 @@ public class BattleStateMachine : MonoBehaviour
 		AttackButton.transform.SetParent(actionSpacer, false);
 		//add an attack button to the list of buttons.
 		atkBtns.Add(AttackButton);
-
-		//Create Defend Button
-		/*GameObject DefendButton = Instantiate(actionButton) as GameObject;
-		DefendButtonText.text = "Defend";
-		DefendButton.GetComponent<Button>().onClick.AddListener( ()  => Input5());
-		Text DefendButtonText = DefendButton.transform.Find("DefendBTNText").gameObject.GetComponent<Text>();
-		DefendButton.transform.SetParent(actionSpacer,false);
-		*/
 
 
 		//PLAYER SKILL BUTTON
