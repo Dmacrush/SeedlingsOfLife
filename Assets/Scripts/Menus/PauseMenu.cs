@@ -6,31 +6,42 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject PauseMenuHolder;
+    public static bool GameIsPaused = false;
 
-    public void PauseGameKeyboard()
+    private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            PauseMenuHolder.SetActive(true);
-            Time.timeScale = 0;
+            if(GameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                PauseGame();
+            }
         }
-        
     }
 
-    public void PauseGameButton()
+    public void PauseGame()
     {
+        Time.timeScale = 0f;
         PauseMenuHolder.SetActive(true);
-        Time.timeScale = 0;
+        GameIsPaused = true;
+        
     }
 
     public void Resume()
     {
+        Time.timeScale = 1f;
         PauseMenuHolder.SetActive(false);
-        Time.timeScale = 1;
+        GameIsPaused = false;
     }
 
     public void MainMenu()
     {
-        SceneManager.LoadScene("MainMenu"); 
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+        
     }
 }

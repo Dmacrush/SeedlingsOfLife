@@ -95,6 +95,7 @@ public class BattleStateMachine : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+        
 		battleStates = PerformAction.WAIT;
 		//Find current enemies in the game with the range of a list with the tag of enemy
 		EnemiesInBattle.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));

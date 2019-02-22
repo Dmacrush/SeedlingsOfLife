@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
     
     public GameObject optionsMenuHolder;
     public GameObject quitHolder;
+    public GameObject loadLevelSelect;
 
     public Slider[] volumeSliders;
     public Toggle[] resolutionToggles;
@@ -19,8 +20,11 @@ public class MainMenu : MonoBehaviour
 
     int activeScreenResIndex;
 
+    LevelScript levelScript;
+
     private void Start()
     {
+        levelScript = FindObjectOfType<LevelScript>();
         activeScreenResIndex = PlayerPrefs.GetInt("screen res index");
         bool isFullscreen = (PlayerPrefs.GetInt("fullscreen") == 1 ? true : false);
 
@@ -120,8 +124,50 @@ public class MainMenu : MonoBehaviour
         AudioManager.instance.SetVolume(value, AudioManager.AudioChannel.Sfx);
     }
 
+    public void LoadBattle()
+    {
+        SceneManager.LoadScene("Battlelevel");
+    }
 
+    public void LoadLevelSelect()
+    {
+        loadLevelSelect.SetActive(true);
+        playMenuHolder.SetActive(false);
 
+        //if we want to save last played level
+        /*
+        if (PlayerPrefs.GetInt("Level Completed") >= 1)
+        {
+            levelScript.CurrentLevel = PlayerPrefs.GetInt("Level Completed");
+            SceneManager.LoadScene(levelScript.CurrentLevel);
 
+        }
+        else
+        {
+            SceneManager.LoadScene(1);    
+        }
+        */
+
+    }
+
+    public void LoadLevel1()
+    {
+        SceneManager.LoadScene("Level1");
+    }
+
+    public void LoadLevel2()
+    {
+        SceneManager.LoadScene("Level2");
+    }
+
+    public void LoadLevel3()
+    {
+        SceneManager.LoadScene("Level3");
+    }
+
+    public void LoadLevel4()
+    {
+        SceneManager.LoadScene("Level4");
+    }
 }
 
