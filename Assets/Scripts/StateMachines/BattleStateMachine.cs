@@ -246,7 +246,7 @@ public class BattleStateMachine : MonoBehaviour
 	{
 		//Add the players action to the perform list
 		PerformList.Add(HeroChoice);
-		//set the enemyselect panel visibility to false
+		//set the enemy select panel visibility to false
 		EnemySelectPanel.SetActive(false);
 
 		//for each attack button(atkBTN) in the list of attack buttons (atkBtns)
@@ -264,7 +264,7 @@ public class BattleStateMachine : MonoBehaviour
 		HeroInput = HeroGUI.ACTIVATE;
 	}
 
-	//create actionbuttons
+	//create action buttons
 	void CreateAttackButtons()
 	{
 
@@ -282,6 +282,14 @@ public class BattleStateMachine : MonoBehaviour
 		AttackButton.transform.SetParent(actionSpacer, false);
 		//add an attack button to the list of buttons.
 		atkBtns.Add(AttackButton);
+
+		//Create Defend Button
+		/*GameObject DefendButton = Instantiate(actionButton) as GameObject;
+		DefendButtonText.text = "Defend";
+		DefendButton.GetComponent<Button>().onClick.AddListener( ()  => Input5());
+		Text DefendButtonText = DefendButton.transform.Find("DefendBTNText").gameObject.GetComponent<Text>();
+		DefendButton.transform.SetParent(actionSpacer,false);
+		*/
 
 
 		//PLAYER SKILL BUTTON
