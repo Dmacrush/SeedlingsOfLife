@@ -141,8 +141,8 @@ public class HeroStateMachine : MonoBehaviour
 					}
 					//change the colour of the player / play the death animation
 					this.gameObject.GetComponent<MeshRenderer>().material.color = new Color32(105,105,105,255);
-					//reset the players input
-					BSM.HeroInput = BattleStateMachine.HeroGUI.ACTIVATE;
+                    //reset the players input
+                    BSM.battleStates = BattleStateMachine.PerformAction.CHECKALIVE;
 					playerIsAlive = false;
 
 					
@@ -197,14 +197,22 @@ public class HeroStateMachine : MonoBehaviour
 		}
 		//remove the performer from the list in the Battle State Machine so the next enemy can attack
 		BSM.PerformList.RemoveAt(0);
-		//Reset the battle state machine -> Wait
-		BSM.battleStates = BattleStateMachine.PerformAction.WAIT;
-
-		actionStarted = false;
-		//reset the enemy state
-		currentCoolDown = 0;
-		//set the current state to turn state.PROCESSING
-		currentState = TurnState.PROCESSING;
+		
+        if(BSM.battleStates != BattleStateMachine.PerformAction.WIN && BSM.battleStates != BattleStateMachine.PerformAction.LOSE)
+        {
+            //Reset the battle state machine -> Wait
+            BSM.battleStates = BattleStateMachine.PerformAction.WAIT;
+            //reset the enemy state
+            currentCoolDown = 0;
+            //set the current state to turn state.PROCESSING
+            currentState = TurnState.PROCESSING;
+        }
+        else
+        {
+            currentState = TurnState.WAITING;
+        }
+        actionStarted = false;
+		
 	}
 
 	private bool MoveTowardsEnemy(Vector3 target)
