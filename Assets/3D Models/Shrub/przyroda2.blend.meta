@@ -3,6 +3,39 @@ guid: 237792b111034824d9495d261a6b731b
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
+    100000: "li\u015Bc"
+    100002: Plane_001
+    100004: Plane_003
+    100006: Plane_023
+    100008: //RootNode
+    100010: Tree_001
+    400000: "li\u015Bc"
+    400002: Plane_001
+    400004: Plane_003
+    400006: Plane_023
+    400008: //RootNode
+    400010: Tree_001
+    2100000: Material
+    2100002: Material_001
+    2100004: Material_002
+    2100006: Material_003
+    2300000: "li\u015Bc"
+    2300002: Plane_001
+    2300004: Plane_003
+    2300006: Plane_023
+    2300008: Tree_001
+    3300000: "li\u015Bc"
+    3300002: Plane_001
+    3300004: Plane_003
+    3300006: Plane_023
+    3300008: Tree_001
+    4300000: Plane_003
+    4300002: Plane_023
+    4300004: Plane_001
+    4300006: "li\u015Bc"
+    4300008: Tree_001
+    7400000: Default Take
+    9500000: //RootNode
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
@@ -57,7 +90,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
