@@ -119,8 +119,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Input1
+      - m_Target: {fileID: 2466925453590306282}
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Event: event:/ButtonPush
-  PlayEvent: 12
+  PlayEvent: 0
   StopEvent: 0
   CollisionTag: 
   AllowFadeout: 1

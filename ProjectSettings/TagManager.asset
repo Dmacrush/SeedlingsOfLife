@@ -9,6 +9,7 @@ TagManager:
   - DeadHero
   - DeadEnemy
   - Fire
+  - Overlap
   layers:
   - Default
   - TransparentFX
