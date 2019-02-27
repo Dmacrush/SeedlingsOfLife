@@ -315,12 +315,11 @@ public class BattleStateMachine : MonoBehaviour
 	{
 		//Add the players action to the perform list
 		PerformList.Add(HeroChoice);
-<<<<<<< Updated upstream
-=======
+
 		//set the enemy select panel visibility to false
 		EnemySelectPanel.SetActive(false);
 
->>>>>>> Stashed changes
+
 
         ClearAttackPanel();
 		
@@ -331,10 +330,8 @@ public class BattleStateMachine : MonoBehaviour
 		HeroInput = HeroGUI.ACTIVATE;
 	}
 
-<<<<<<< Updated upstream
-=======
+
 	//create action buttons
->>>>>>> Stashed changes
     void ClearAttackPanel()
     {
         //set the enemyselect panel visibility to false
@@ -352,10 +349,6 @@ public class BattleStateMachine : MonoBehaviour
     }
 
 	//create actionbuttons
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 	void CreateAttackButtons()
 	{
 
