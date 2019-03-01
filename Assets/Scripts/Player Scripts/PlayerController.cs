@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 //ensure that the playermotor script is found so this script can be used
 [RequireComponent(typeof(PlayerMotor))]
 public class PlayerController: MonoBehaviour
@@ -38,7 +39,11 @@ public class PlayerController: MonoBehaviour
 
     void Update()
     {
-	
+		//check if we are hovering over the ui, if we are then stop the player from moving
+		if (EventSystem.current.IsPointerOverGameObject())
+		{
+			return;
+		}
 		//input variable  = movement made on the horizontal or vertical axis
         input = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
 		//set the players velocity to the detected input multiplied by the move speed

@@ -1,96 +1,112 @@
 fileFormatVersion: 2
-guid: 73be9633513854604baae3aa06041436
+guid: a94459c5735e5fa4480b741e9afc3048
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: Armature
-    100002: Chest
-    100004: Cube
-    100006: Fingers01_L
-    100008: Fingers01_R
-    100010: Fingers02_L
-    100012: Fingers02_R
-    100014: Foot_L
-    100016: Foot_R
-    100018: Hand_L
-    100020: Hand_R
-    100022: Head
-    100024: Hips
-    100026: Lower_Arm_L
-    100028: Lower_Arm_R
-    100030: Lower_Leg_L
-    100032: Lower_Leg_R
-    100034: Neck
-    100036: //RootNode
-    100038: Shoulder_L
-    100040: Shoulder_R
-    100042: Spine
-    100044: Thumb01_L
-    100046: Thumb01_R
-    100048: Thumb02_L
-    100050: Thumb02_R
-    100052: Toes_L
-    100054: Toes_R
-    100056: Upper_Arm_L
-    100058: Upper_Arm_R
-    100060: Upper_Leg_L
-    100062: Upper_Leg_R
+    100002: Body
+    100004: Chest
+    100006: //RootNode
+    100008: Fingers01_L
+    100010: Fingers01_R
+    100012: Fingers02_L
+    100014: Fingers02_R
+    100016: Foot_L
+    100018: Foot_R
+    100020: Hair
+    100022: Hand_L
+    100024: Hand_R
+    100026: Head
+    100028: Hips
+    100030: Lower_Arm_L
+    100032: Lower_Arm_R
+    100034: Lower_Leg_L
+    100036: Lower_Leg_R
+    100038: Neck
+    100040: Pants
+    100042: Shirt
+    100044: Shoes
+    100046: Shoulder_L
+    100048: Shoulder_R
+    100050: Spine
+    100052: Thumb01_L
+    100054: Thumb01_R
+    100056: Thumb02_L
+    100058: Thumb02_R
+    100060: Toes_L
+    100062: Toes_R
+    100064: Upper_Arm_L
+    100066: Upper_Arm_R
+    100068: Upper_Leg_L
+    100070: Upper_Leg_R
     400000: Armature
-    400002: Chest
-    400004: Cube
-    400006: Fingers01_L
-    400008: Fingers01_R
-    400010: Fingers02_L
-    400012: Fingers02_R
-    400014: Foot_L
-    400016: Foot_R
-    400018: Hand_L
-    400020: Hand_R
-    400022: Head
-    400024: Hips
-    400026: Lower_Arm_L
-    400028: Lower_Arm_R
-    400030: Lower_Leg_L
-    400032: Lower_Leg_R
-    400034: Neck
-    400036: //RootNode
-    400038: Shoulder_L
-    400040: Shoulder_R
-    400042: Spine
-    400044: Thumb01_L
-    400046: Thumb01_R
-    400048: Thumb02_L
-    400050: Thumb02_R
-    400052: Toes_L
-    400054: Toes_R
-    400056: Upper_Arm_L
-    400058: Upper_Arm_R
-    400060: Upper_Leg_L
-    400062: Upper_Leg_R
-    4300000: Cube
+    400002: Body
+    400004: Chest
+    400006: //RootNode
+    400008: Fingers01_L
+    400010: Fingers01_R
+    400012: Fingers02_L
+    400014: Fingers02_R
+    400016: Foot_L
+    400018: Foot_R
+    400020: Hair
+    400022: Hand_L
+    400024: Hand_R
+    400026: Head
+    400028: Hips
+    400030: Lower_Arm_L
+    400032: Lower_Arm_R
+    400034: Lower_Leg_L
+    400036: Lower_Leg_R
+    400038: Neck
+    400040: Pants
+    400042: Shirt
+    400044: Shoes
+    400046: Shoulder_L
+    400048: Shoulder_R
+    400050: Spine
+    400052: Thumb01_L
+    400054: Thumb01_R
+    400056: Thumb02_L
+    400058: Thumb02_R
+    400060: Toes_L
+    400062: Toes_R
+    400064: Upper_Arm_L
+    400066: Upper_Arm_R
+    400068: Upper_Leg_L
+    400070: Upper_Leg_R
+    2100000: Hair
+    2100002: Shoe
+    2100004: Shirt
+    2100006: Pants
+    2100008: Skin
+    4300000: Hair
+    4300002: Shoes
+    4300004: Shirt
+    4300006: Pants
+    4300008: Body
     7400000: Default Take
     7400002: Idle
     7400004: Run
     7400006: Walk
     9500000: //RootNode
-    13700000: Cube
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: 3ed725f7d4fa6408cab10eb306af6454, type: 2}
+    13700000: Body
+    13700002: Hair
+    13700004: Pants
+    13700006: Shirt
+    13700008: Shoes
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    motionNodeName: <Root Transform>
+    motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
@@ -111,7 +127,7 @@ ModelImporter:
       name: Default Take
       takeName: Default Take
       firstFrame: 0
-      lastFrame: 98
+      lastFrame: 23
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -226,10 +242,10 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
-    importVisibility: 0
+    importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -237,7 +253,7 @@ ModelImporter:
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
-    indexFormat: 1
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -249,8 +265,8 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-    normalCalculationMode: 0
-    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   importAnimation: 1

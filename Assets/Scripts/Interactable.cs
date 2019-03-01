@@ -79,7 +79,15 @@ public class Interactable : MonoBehaviour
 	//Show colours on the object that the player is looking at
 	void OnDrawGizmosSelected()
 	{
+		//check if the assigned interaction transform is null 
+		if (interactionTransform == null)
+		{
+			//set the interaction transform to the objects own transform
+			interactionTransform = transform;
+		}
+		//colour the interaction radius lines yellow
 		Gizmos.color = Color.yellow;
+		//draw the interaction radius around the object
 		Gizmos.DrawWireSphere(interactionTransform.position,radius);
 	}
 }
