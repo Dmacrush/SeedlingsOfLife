@@ -74,7 +74,7 @@ public class HeroStateMachine : MonoBehaviour
 		//set the players transform to the startPositon
 		startPosition = transform.position;
 		//set the current cooldown to a random range to add randomness to the progress bars (can use luck stat to alter/speed stat
-		currentCoolDown = Random.Range(0, 2.5f);
+		currentCoolDown = 0f;//Random.Range(0, 2.5f);
 		//set the current selector to false
 		Selector.SetActive(false);
 		//Find the battle manager
@@ -177,6 +177,8 @@ public class HeroStateMachine : MonoBehaviour
 			//Stop the coroutine here
 			yield break;
 		}
+
+		currentCoolDown = 0f;
 		//Otherwise set actionStarted bool to true
 		actionStarted = true;
 		//animate the player near the enemy to attack the targetted enemy, increase the targets.X position
