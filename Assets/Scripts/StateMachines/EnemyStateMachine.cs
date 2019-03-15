@@ -98,11 +98,20 @@ public class EnemyStateMachine : MonoBehaviour
                     //Disable the selector
                     Selector.SetActive(false);
                     //remove all inputs by enemy
-                    for (int i = 0; i < BSM.PerformList.Count; i++)
+                    if(BSM.EnemiesInBattle.Count > 0)
                     {
-                        if (BSM.PerformList[i].AttackersGameObject == this.gameObject)
+
+                    
+                        for (int i = 0; i < BSM.PerformList.Count; i++)
                         {
-                            BSM.PerformList.Remove(BSM.PerformList[i]);
+                            if (BSM.PerformList[i].AttackersGameObject == this.gameObject)
+                            {
+                                BSM.PerformList.Remove(BSM.PerformList[i]);
+                            }
+                            if(BSM.PerformList[i].AttackersTarget == this.gameObject)
+                            {
+                                BSM.PerformList[i].AttackersTarget = BSM.EnemiesInBattle[Random.Range(0, BSM.EnemiesInBattle.Count)];
+                            }
                         }
                     }
                     //change the color of the enemy/ play death animation

@@ -132,16 +132,23 @@ public class HeroStateMachine : MonoBehaviour
 					//reset the GUI
 					BSM.AttackPanel.SetActive(false);
 					BSM.EnemySelectPanel.SetActive(false);
-					//remove the object from the perform list
-					for (int i = 0; i < BSM.PerformList.Count; i++)
-					{
-						if (BSM.PerformList[i].AttackersGameObject == this.gameObject)
-						{
-							BSM.PerformList.Remove(BSM.PerformList[i]);
-						}
-					}
-					//change the colour of the player / play the death animation
-					this.gameObject.GetComponent<MeshRenderer>().material.color = new Color32(105,105,105,255);
+                    //remove the object from the perform list
+                    if(BSM.HerosInBattle.Count > 0)
+                    { 
+                        for (int i = 0; i < BSM.PerformList.Count; i++)
+					    {
+						    if (BSM.PerformList[i].AttackersGameObject == this.gameObject)
+						    {
+							    BSM.PerformList.Remove(BSM.PerformList[i]);
+						    }
+                            if(BSM.PerformList[i].AttackersTarget == this.gameObject)
+                            {
+                                BSM.PerformList[i].AttackersTarget = BSM.HerosInBattle[Random.Range(0, BSM.HerosInBattle.Count)];
+                            }
+					    }
+                    }
+                    //change the colour of the player / play the death animation
+                    this.gameObject.GetComponent<MeshRenderer>().material.color = new Color32(105,105,105,255);
                     //reset the players input
                     BSM.battleStates = BattleStateMachine.PerformAction.CHECKALIVE;
 					playerIsAlive = false;
