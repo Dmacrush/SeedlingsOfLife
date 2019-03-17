@@ -89,16 +89,28 @@ public class BattleStateMachine : MonoBehaviour
 	private List<GameObject> atkBtns = new List<GameObject>();
 
     //enemy buttons
-    private List<GameObject> enemyBtns = new List<GameObject>(); 
+    private List<GameObject> enemyBtns = new List<GameObject>();
 
+    public List<Transform> spawnPoints = new List<Transform>();
 
-	// Use this for initialization
-	void Start()
+    private void Awake()
+    {
+        for(int i = 0; i < GameManager.instance.enemyAmount; i++)
+        {
+            GameObject NewEnemy = Instantiate(GameManager.instance.enemiesToBattle[i],spawnPoints[i].position,Quaternion.identity) as GameObject;
+            NewEnemy.name = NewEnemy.GetComponent<EnemyStateMachine>().enemy.theName + "_" + (i+1);
+            NewEnemy.GetComponent<EnemyStateMachine>().enemy.theName = NewEnemy.name;
+            EnemiesInBattle.Add(NewEnemy);
+        }
+    }
+
+    // Use this for initialization
+    void Start()
 	{
         
 		battleStates = PerformAction.WAIT;
 		//Find current enemies in the game with the range of a list with the tag of enemy
-		EnemiesInBattle.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
+		//unneeded line ---> //EnemiesInBattle.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
 		//Find current enemies in the game with the range of a list with the tag of enemy
 		HerosInBattle.AddRange(GameObject.FindGameObjectsWithTag("Hero"));
 		//Set the heros input state to activate
@@ -212,6 +224,10 @@ public class BattleStateMachine : MonoBehaviour
                         HerosInBattle[i].GetComponent<HeroStateMachine>().currentState = HeroStateMachine.TurnState.WAITING;
 
                     }
+
+                    GameManager.instance.LoadSceneAfterBattle();
+                    GameManager.instance.gameState = GameManager.GameStates.WORLD_STATE;
+                    GameManager.instance.enemiesToBattle.Clear();
                 }
                 break;
         }

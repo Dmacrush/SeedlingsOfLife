@@ -15,6 +15,9 @@ public class PlayerController: MonoBehaviour
     private Vector3 input;
 	//Player velocity
     public Vector3 playerVelocity;
+
+    Vector3 currentPosition;
+    Vector3 lastPosition;
 	
 	//Reference to the PlayerMotor Script
 	private PlayerMotor thePlayerMotor;
@@ -27,6 +30,8 @@ public class PlayerController: MonoBehaviour
 	//Keep track of what is being focused on
 	public Interactable focus;
 
+    
+
     void Start()
     {
 		//get the attached rigidbody component
@@ -35,7 +40,9 @@ public class PlayerController: MonoBehaviour
 		cam = FindObjectOfType<Camera>();
 		//Get the playermotor script attached to the player
 		thePlayerMotor = GetComponent<PlayerMotor>();
-	}
+        //sets the position for gamemanger
+        transform.position = GameManager.instance.nextPlayerPosition;
+    }
 
     void Update()
     {
@@ -105,6 +112,17 @@ public class PlayerController: MonoBehaviour
 		//set the rigidbodys velocity to the player velocity
         rb.velocity = playerVelocity;
 
+        //controls encounter zone stuff
+        currentPosition = transform.position;
+        if(currentPosition == lastPosition)
+        {
+            GameManager.instance.isWalking = false;
+        }
+        else
+        {
+            GameManager.instance.isWalking = true;
+        }
+        lastPosition = currentPosition;
 
         /*
         float moveHorizontal = Input.GetAxis("Horizontal");
@@ -149,4 +167,43 @@ public class PlayerController: MonoBehaviour
 		//call the stop following the target function to stop the player from facing the object
 		thePlayerMotor.StopFollowingTarget();
 	}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        /* //also make tag for scene name
+        if(other.tag == "SceneNameHere")
+        {
+            CollisionHandler col = other.gameObject.GetComponent<CollisionHandler>();
+            GameManager.instance.nextPlayerPosition = col.spawnPoint.transform.position;
+            GameManager.instance.sceneToLoad = col.sceneToLoad;
+            GameManager.instance.LoadNextScene();
+        }
+        */
+        if(other.tag == "Region1")
+        {
+
+            GameManager.instance.currentRegion = 0;
+        }
+
+        if (other.tag == "Region2")
+        {
+            GameManager.instance.currentRegion = 1;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.tag == "Region1" || other.tag == "Region2")
+        {
+            GameManager.instance.canEncounter = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Region1" || other.tag == "Region2")
+        {
+            GameManager.instance.canEncounter = false;
+        }
+    }
 }
