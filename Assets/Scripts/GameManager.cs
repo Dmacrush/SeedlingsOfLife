@@ -7,19 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    //Class Random Monsters
-    [System.Serializable]
-    public class RegionData
-    {
-        public string regionName;
-        public int maxAmountEnemies = 4;
-        public string BattleScene;
-        public List<GameObject> possibleEnemies = new List<GameObject>();
-    }
-
-    public int currentRegion;
-
-    public List<RegionData> Regions = new List<RegionData>();
+    public RegionData currentRegion;
 
     public GameObject playerCharacter;
 
@@ -121,16 +109,16 @@ public class GameManager : MonoBehaviour
     void StartBattle()
     {
         //amount of enemies
-        enemyAmount = Random.Range(1, Regions[currentRegion].maxAmountEnemies + 1);
+        enemyAmount = Random.Range(1, currentRegion.maxAmountEnemies + 1);
         //which enemies
         for(int i = 0; i < enemyAmount; i++)
         {
-            enemiesToBattle.Add(Regions[currentRegion].possibleEnemies[Random.Range(0, Regions[currentRegion].possibleEnemies.Count)]);
+            enemiesToBattle.Add(currentRegion.possibleEnemies[Random.Range(0, currentRegion.possibleEnemies.Count)]);
         }
         lastPlayerPosition = GameObject.Find("Player").gameObject.transform.position;
         nextPlayerPosition = lastPlayerPosition;
         lastScene = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(Regions[currentRegion].BattleScene);
+        SceneManager.LoadScene(currentRegion.BattleScene);
         isWalking = false;
         gotAttacked = false;
         canEncounter = false;

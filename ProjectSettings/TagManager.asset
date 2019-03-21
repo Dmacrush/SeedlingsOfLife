@@ -10,8 +10,7 @@ TagManager:
   - DeadEnemy
   - Fire
   - Overlap
-  - Region1
-  - Region2
+  - EncounterZone
   layers:
   - Default
   - TransparentFX

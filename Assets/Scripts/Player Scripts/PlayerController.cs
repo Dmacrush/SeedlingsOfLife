@@ -179,21 +179,18 @@ public class PlayerController: MonoBehaviour
             GameManager.instance.LoadNextScene();
         }
         */
-        if(other.tag == "Region1")
+        if(other.tag == "EncounterZone")
         {
+            RegionData region = other.gameObject.GetComponent<RegionData>();
 
-            GameManager.instance.currentRegion = 0;
+            GameManager.instance.currentRegion = region;
         }
 
-        if (other.tag == "Region2")
-        {
-            GameManager.instance.currentRegion = 1;
-        }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.tag == "Region1" || other.tag == "Region2")
+        if (other.tag == "EncounterZone")
         {
             GameManager.instance.canEncounter = true;
         }
@@ -201,7 +198,7 @@ public class PlayerController: MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Region1" || other.tag == "Region2")
+        if (other.tag == "EncounterZone")
         {
             GameManager.instance.canEncounter = false;
         }

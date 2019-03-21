@@ -137,15 +137,18 @@ public class HeroStateMachine : MonoBehaviour
                     { 
                         for (int i = 0; i < BSM.PerformList.Count; i++)
 					    {
-						    if (BSM.PerformList[i].AttackersGameObject == this.gameObject)
-						    {
-							    BSM.PerformList.Remove(BSM.PerformList[i]);
-						    }
-                            if(BSM.PerformList[i].AttackersTarget == this.gameObject)
+                            if(i != 0)
                             {
-                                BSM.PerformList[i].AttackersTarget = BSM.HerosInBattle[Random.Range(0, BSM.HerosInBattle.Count)];
+                                if (BSM.PerformList[i].AttackersGameObject == this.gameObject)
+                                {
+                                    BSM.PerformList.Remove(BSM.PerformList[i]);
+                                }
+                                if (BSM.PerformList[i].AttackersTarget == this.gameObject)
+                                {
+                                    BSM.PerformList[i].AttackersTarget = BSM.HerosInBattle[Random.Range(0, BSM.HerosInBattle.Count)];
+                                }
                             }
-					    }
+                        }
                     }
                     //change the colour of the player / play the death animation
                     this.gameObject.GetComponent<MeshRenderer>().material.color = new Color32(105,105,105,255);
