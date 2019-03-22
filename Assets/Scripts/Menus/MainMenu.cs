@@ -54,6 +54,7 @@ public class MainMenu : MonoBehaviour
         playMenuHolder.SetActive(true);
         optionsMenuHolder.SetActive(false);
         quitHolder.SetActive(false);
+        loadLevelSelect.SetActive(false);
     }
 
     public void DisplayQuitMenu()
@@ -61,6 +62,7 @@ public class MainMenu : MonoBehaviour
         playMenuHolder.SetActive(false);
         optionsMenuHolder.SetActive(false);
         quitHolder.SetActive(true);
+        loadLevelSelect.SetActive(false);
     }
 
     public void DisPlayOptionsMenu()
@@ -68,6 +70,7 @@ public class MainMenu : MonoBehaviour
         playMenuHolder.SetActive(false);
         quitHolder.SetActive(false);
         optionsMenuHolder.SetActive(true);
+        loadLevelSelect.SetActive(false);
     }
 
     public void Quit()
