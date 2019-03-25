@@ -105,7 +105,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAmountEnemies: 2
-  BattleScene: BattleScene
+  BattleScene: BattleLevel
   possibleEnemies:
-  - {fileID: 3340068944901962908, guid: 304c43a21efd5104cb9e088fb86b9b81, type: 3}
   - {fileID: 3340068944901962908, guid: 304c43a21efd5104cb9e088fb86b9b81, type: 3}

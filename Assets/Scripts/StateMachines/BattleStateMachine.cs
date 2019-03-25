@@ -459,6 +459,13 @@ public class BattleStateMachine : MonoBehaviour
 		SkillPanel.SetActive(true);
 
 	}
+
+    public void RunAway()
+    {
+        GameManager.instance.LoadSceneAfterBattle();
+        GameManager.instance.gameState = GameManager.GameStates.WORLD_STATE;
+        GameManager.instance.enemiesToBattle.Clear();
+    }
 }
 
 
