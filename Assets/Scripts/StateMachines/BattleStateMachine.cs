@@ -92,6 +92,7 @@ public class BattleStateMachine : MonoBehaviour
     private List<GameObject> enemyBtns = new List<GameObject>();
 
     public List<Transform> spawnPoints = new List<Transform>();
+    public List<Transform> spawnPointsPlayer = new List<Transform>();
 
     private void Awake()
     {
@@ -101,6 +102,14 @@ public class BattleStateMachine : MonoBehaviour
             NewEnemy.name = NewEnemy.GetComponent<EnemyStateMachine>().enemy.theName + "_" + (i+1);
             NewEnemy.GetComponent<EnemyStateMachine>().enemy.theName = NewEnemy.name;
             EnemiesInBattle.Add(NewEnemy);
+        }
+
+        for (int i = 0; i < GameManager.instance.playerAmount; i++)
+        {
+            GameObject NewPlayer = Instantiate(GameManager.instance.playersToBattle[i], spawnPointsPlayer[i].position, Quaternion.identity) as GameObject;
+            NewPlayer.name = NewPlayer.GetComponent<HeroStateMachine>().heroStats.theName + "_" + (i + 1);
+            NewPlayer.GetComponent<HeroStateMachine>().heroStats.theName = NewPlayer.name;
+            HerosInBattle.Add(NewPlayer);
         }
     }
 
@@ -112,7 +121,7 @@ public class BattleStateMachine : MonoBehaviour
 		//Find current enemies in the game with the range of a list with the tag of enemy
 		//unneeded line ---> //EnemiesInBattle.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
 		//Find current enemies in the game with the range of a list with the tag of enemy
-		HerosInBattle.AddRange(GameObject.FindGameObjectsWithTag("Hero"));
+		//HerosInBattle.AddRange(GameObject.FindGameObjectsWithTag("Hero"));
 		//Set the heros input state to activate
 		HeroInput = HeroGUI.ACTIVATE;
         //set the attack panel to false
@@ -228,6 +237,7 @@ public class BattleStateMachine : MonoBehaviour
                     GameManager.instance.LoadSceneAfterBattle();
                     GameManager.instance.gameState = GameManager.GameStates.WORLD_STATE;
                     GameManager.instance.enemiesToBattle.Clear();
+                    GameManager.instance.playersToBattle.Clear();
                 }
                 break;
         }
@@ -465,6 +475,7 @@ public class BattleStateMachine : MonoBehaviour
         GameManager.instance.LoadSceneAfterBattle();
         GameManager.instance.gameState = GameManager.GameStates.WORLD_STATE;
         GameManager.instance.enemiesToBattle.Clear();
+        GameManager.instance.playersToBattle.Clear();
     }
 }
 

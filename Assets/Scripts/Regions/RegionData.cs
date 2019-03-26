@@ -8,4 +8,7 @@ public class RegionData : MonoBehaviour
     public string BattleScene;
     public List<GameObject> possibleEnemies = new List<GameObject>();
 
+    public int maxAmountPlayers = 4;
+    
+    public List<GameObject> possiblePlayers = new List<GameObject>();
 }

@@ -32,6 +32,10 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> enemiesToBattle = new List<GameObject>();
 
+    public int playerAmount;
+
+    public List<GameObject> playersToBattle = new List<GameObject>();
+
     public GameStates gameState;
 
     void Awake()
@@ -115,6 +119,15 @@ public class GameManager : MonoBehaviour
         {
             enemiesToBattle.Add(currentRegion.possibleEnemies[Random.Range(0, currentRegion.possibleEnemies.Count)]);
         }
+        //amount of enemies
+        playerAmount = Random.Range(1, currentRegion.maxAmountPlayers + 1);
+        //which enemies
+        for (int i = 0; i < playerAmount; i++)
+        {
+            playersToBattle.Add(currentRegion.possiblePlayers[Random.Range(0, currentRegion.possiblePlayers.Count)]);
+        }
+
+
         lastPlayerPosition = GameObject.Find("Player").gameObject.transform.position;
         nextPlayerPosition = lastPlayerPosition;
         lastScene = SceneManager.GetActiveScene().name;
