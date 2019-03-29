@@ -92,15 +92,17 @@ public class BattleStateMachine : MonoBehaviour
     private List<GameObject> enemyBtns = new List<GameObject>();
 
     public List<Transform> spawnPoints = new List<Transform>();
-    public List<Transform> spawnPointsPlayer = new List<Transform>();
+	public List<Transform> spawnPointsPlayer = new List<Transform>();
+
+	public BaseStats theBaseStats;
 
     private void Awake()
     {
         for(int i = 0; i < GameManager.instance.enemyAmount; i++)
         {
             GameObject NewEnemy = Instantiate(GameManager.instance.enemiesToBattle[i],spawnPoints[i].position,Quaternion.identity) as GameObject;
-            NewEnemy.name = NewEnemy.GetComponent<EnemyStateMachine>().enemy.theName + "_" + (i+1);
-            NewEnemy.GetComponent<EnemyStateMachine>().enemy.theName = NewEnemy.name;
+            NewEnemy.name = NewEnemy.GetComponent<EnemyStateMachine>().enemyStats.theName + "_" + (i+1);
+            NewEnemy.GetComponent<EnemyStateMachine>().enemyStats.theName = NewEnemy.name;
             EnemiesInBattle.Add(NewEnemy);
         }
 
@@ -108,7 +110,7 @@ public class BattleStateMachine : MonoBehaviour
         {
             GameObject NewPlayer = Instantiate(GameManager.instance.playersToBattle[i], spawnPointsPlayer[i].position, Quaternion.identity) as GameObject;
             NewPlayer.name = NewPlayer.GetComponent<HeroStateMachine>().heroStats.theName + "_" + (i + 1);
-            NewPlayer.GetComponent<HeroStateMachine>().heroStats.theName = NewPlayer.name;
+            NewPlayer.GetComponent<BaseStats>().theName = NewPlayer.name;
             HerosInBattle.Add(NewPlayer);
         }
     }
@@ -186,8 +188,9 @@ public class BattleStateMachine : MonoBehaviour
 				{
 					//Get the hero state machine component
 					HeroStateMachine HSM = performer.GetComponent<HeroStateMachine>();
-					//Add the enemy to attack to the list of performers based on the targetted enemy
+					//Add the enemy to attack to the list of performers based on thetargeted enemy
 					HSM.EnemyToAttack = PerformList[0].AttackersTarget;
+
 					//Set the current state in the hero state machine to action
 					HSM.currentState = HeroStateMachine.TurnState.ACTION;
 					//Debug.Log("Hero is here to perform");
@@ -302,7 +305,7 @@ public class BattleStateMachine : MonoBehaviour
 			//create a buttonText variable find the text component in the game object
 			Text buttonText = newButton.transform.Find("E1Text").gameObject.GetComponent<Text>();
 			//find the selected enemys name and store it in the buttonText variable
-			buttonText.text = cur_enemy.enemy.theName;
+			buttonText.text = cur_enemy.enemyStats.theName;
 			//Pass the content needed for when in battle
 			button.enemyPrefab = enemy;
 

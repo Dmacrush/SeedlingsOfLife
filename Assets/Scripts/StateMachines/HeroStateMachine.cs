@@ -7,8 +7,8 @@ public class HeroStateMachine : MonoBehaviour
 {
 	private BattleStateMachine BSM;
 
-	//Reference to the Base Hero Class
-	public BaseHero heroStats;
+	//Reference to the BaseStats Class
+	public BaseStats heroStats;
 
 	//Enum Declaration
 	public enum TurnState
@@ -166,7 +166,7 @@ public class HeroStateMachine : MonoBehaviour
 	void UpdateProgressBar()
 	{
 		//Add to the current cooldown based on the time that has past until it reaches the maximum cooldown time
-		currentCoolDown = currentCoolDown + Time.deltaTime;
+		currentCoolDown = currentCoolDown + Time.deltaTime * heroStats.Speed;
 		//value for calculating the cooldown
 		float calc_cooldown = currentCoolDown / maximumCoolDown;
 		//clamp the x value between 0 and 1 of the cooldown value to represent the current progressbar
@@ -191,7 +191,7 @@ public class HeroStateMachine : MonoBehaviour
 		currentCoolDown = 0f;
 		//Otherwise set actionStarted bool to true
 		actionStarted = true;
-		//animate the player near the enemy to attack the targetted enemy, increase the targets.X position
+		//animate the player near the enemy to attack the targeted enemy, increase the targets.X position
 		Vector3 enemyPosition = new Vector3(EnemyToAttack.transform.position.x + 1.5f, EnemyToAttack.transform.position.y,
 			EnemyToAttack.transform.position.z);
 		while (MoveTowardsEnemy(enemyPosition))
@@ -241,11 +241,11 @@ public class HeroStateMachine : MonoBehaviour
 	public void TakeDamage(float getDamageAmount)
 	{
 		//apply the damage to the hero based on the getDamageAmount
-		heroStats.curHp -= getDamageAmount;
+		heroStats.Health -= getDamageAmount / heroStats.Defense;
 		//check if the current hero is dead
-		if (heroStats.curHp <= 0)
+		if (heroStats.Health <= 0)
 		{
-			heroStats.curHp = 0;
+			heroStats.Health = 0;
 			currentState = TurnState.DEATH;
 		}
 		UpdateHeroPanel();
@@ -255,7 +255,7 @@ public class HeroStateMachine : MonoBehaviour
 	void DoDamage()
 	{
 		//Calculate the damage that the hero will do from the battle state machine/ chosen attack command + the attack damage
-		float calc_Damage = heroStats.curATK + BSM.PerformList[0].chosenAttack.attackDamage;
+		float calc_Damage = heroStats.Strength + BSM.PerformList[0].chosenAttack.attackDamage;
 		//get the enemy that has been attacked, call the take damage function from the Enemy State Machine and input the damage based on the calc_damage from the Hero
 		EnemyToAttack.GetComponent<EnemyStateMachine>().TakeDamage(calc_Damage);
 	}
@@ -269,9 +269,9 @@ public class HeroStateMachine : MonoBehaviour
 		//display the current hero name
 		stats.heroName.text = heroStats.theName;
 		//display the current hero hp
-		stats.heroHP.text = "HP: " + heroStats.curHp;
+		stats.heroHP.text = "HP: " + heroStats.Health;
 		//display the current hero mp
-		stats.heroMP.text = "MP: " + heroStats.curMp;
+		stats.heroSP.text = "SP: " + heroStats.Skill;
 		//display the current progress bar
 		theProgressBar = stats.progressBar;
 		//set the hero panel to the parent spacer panel game object without changing the local scale.
@@ -281,9 +281,9 @@ public class HeroStateMachine : MonoBehaviour
 	void UpdateHeroPanel()
 	{
 		//display the current hero hp
-		stats.heroHP.text = "HP: " + heroStats.curHp;
+		stats.heroHP.text = "HP: " + heroStats.Health;
 		//display the current hero mp
-		stats.heroMP.text = "MP: " + heroStats.curMp;
+		stats.heroSP.text = "SP: " + heroStats.Health;
 	}
 }
 

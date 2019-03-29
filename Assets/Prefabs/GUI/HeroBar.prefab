@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 222310648810200766}
   - component: {fileID: 114357942950477398}
   m_Layer: 5
-  m_Name: PlayerMPText
+  m_Name: PlayerSPText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -427,7 +427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heroName: {fileID: 114059820125471020}
   heroHP: {fileID: 114466284038719246}
-  heroMP: {fileID: 114357942950477398}
+  heroSP: {fileID: 114357942950477398}
   progressBar: {fileID: 114812072553741120}
 --- !u!1 &1938098961606960
 GameObject:

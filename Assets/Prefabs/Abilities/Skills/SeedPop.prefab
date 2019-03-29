@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackName: Seed Pop
-  attackDescription: Shoot a gumnut at the target enemy
+  attackDescription: Shoot a seed at the target enemy
   attackDamage: 20
   attackCost: 10

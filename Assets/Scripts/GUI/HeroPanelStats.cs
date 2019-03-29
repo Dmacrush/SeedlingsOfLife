@@ -7,11 +7,6 @@ public class HeroPanelStats : MonoBehaviour
 {
 	public Text heroName;
 	public Text heroHP;
-	public Text heroMP;
+	public Text heroSP;
 	public Image progressBar;
-
-
-
-
-
 }

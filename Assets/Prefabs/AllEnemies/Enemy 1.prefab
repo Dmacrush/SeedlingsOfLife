@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7281002859887365242}
   - component: {fileID: 3201772508176856876}
   - component: {fileID: 6252910412312992026}
+  - component: {fileID: 8449271650060432630}
   m_Layer: 0
   m_Name: Enemy 1
   m_TagString: Enemy
@@ -97,24 +98,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24d9e0253b510b54f8265a757b5e6345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy:
-    theName: Enemy 1
-    baseHp: 100
-    curHp: 100
-    baseMp: 10
-    curMp: 10
-    baseATK: 5
-    curATK: 5
-    baseDEF: 2
-    curDEF: 2
-    attacks:
-    - {fileID: 114964494905129484, guid: 71ebd01d2bc92e643977fa191a438763, type: 3}
-    - {fileID: 114778834552849902, guid: 628d3fd7aa80ed94198dfbec3a43674e, type: 3}
-    EnemyType: 0
-    rarity: 0
+  enemyStats: {fileID: 8449271650060432630}
   currentState: 0
   Selector: {fileID: 6461994214525896398}
   HeroToAttack: {fileID: 0}
+--- !u!114 &8449271650060432630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3340068944901962908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9940398f1a8f874f9d45c70482ff9ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  theName: Enemy
+  image: {fileID: 0}
+  Health: 100
+  Speed: 10
+  Strength: 10
+  Skill: 10
+  Defense: 10
+  Spirit: 10
+  seedType: 0
+  rarity: 0
+  attacks:
+  - {fileID: 114964494905129484, guid: 71ebd01d2bc92e643977fa191a438763, type: 3}
+  skillAttacks: []
 --- !u!1 &6461994214525896398
 GameObject:
   m_ObjectHideFlags: 0

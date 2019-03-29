@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
     public RegionData currentRegion;
-
     public GameObject playerCharacter;
 
     public Vector3 nextPlayerPosition;
@@ -35,6 +36,11 @@ public class GameManager : MonoBehaviour
     public int playerAmount;
 
     public List<GameObject> playersToBattle = new List<GameObject>();
+
+	public List<BaseStats> allSeedlings = new List<BaseStats>();
+
+	public List<BaseAttack> allSeedlingMoves = new List<BaseAttack>();
+
 
     public GameStates gameState;
 
@@ -111,17 +117,21 @@ public class GameManager : MonoBehaviour
     }
 
     void StartBattle()
-    {
-        //amount of enemies
-        enemyAmount = Random.Range(1, currentRegion.maxAmountEnemies + 1);
+	{
+		BaseStats battleSeedlings = GetRandomSeedlingFromList(GetSeedlingsByType(BaseStats.SeedlingType.Party));
+		Debug.Log(battleSeedlings.name);
+		BaseStats enemyBattleSeedlings = GetRandomSeedlingFromList(GetSeedlingsByType(BaseStats.SeedlingType.Enemy));
+		//enemy reference here
+		//amount of enemies
+		enemyAmount = Random.Range(1, currentRegion.maxAmountEnemies + 1);
         //which enemies
         for(int i = 0; i < enemyAmount; i++)
         {
             enemiesToBattle.Add(currentRegion.possibleEnemies[Random.Range(0, currentRegion.possibleEnemies.Count)]);
         }
-        //amount of enemies
-        playerAmount = Random.Range(1, currentRegion.maxAmountPlayers + 1);
-        //which enemies
+        //amount of players
+		playerAmount = Random.Range(1, currentRegion.maxAmountPlayers + 1);
+        //which players
         for (int i = 0; i < playerAmount; i++)
         {
             playersToBattle.Add(currentRegion.possiblePlayers[Random.Range(0, currentRegion.possiblePlayers.Count)]);
@@ -137,4 +147,48 @@ public class GameManager : MonoBehaviour
         canEncounter = false;
     }
 
+	public List<BaseStats> GetSeedlingsByType(BaseStats.SeedlingType seedlingType)
+	{
+		List<BaseStats> returnSeedlings = new List<BaseStats>();
+		foreach (BaseStats Seedling in allSeedlings)
+		{
+			if (Seedling.seedType == seedlingType)
+			{
+				returnSeedlings.Add(Seedling);
+			}
+		}
+
+		return returnSeedlings;
+	}
+
+	public BaseStats GetRandomSeedlingFromList(List<BaseStats> seedlingList)
+	{
+		BaseStats seed = new BaseStats();
+		//get a random seedling from the list of seedlings in BaseStats. Change this to get a set one.
+		int seedlingIndex = Random.Range(0, seedlingList.Count - 1);
+		seed = seedlingList[seedlingIndex];
+		return seed;
+	}
+
+	[System.Serializable]
+	public class SeedlingMoves
+	{
+		private string name;
+		public MoveType category;
+		public Stat moveStat;
+		public BaseStats.SeedlingType moveType;
+	}
+
+	[System.Serializable]
+	public class Stat
+	{
+		public float minimum;
+		public float maximum;
+	}
+
+	public enum MoveType
+	{
+		Physical,
+		Skill,
+	}
 }

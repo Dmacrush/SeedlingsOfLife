@@ -13,11 +13,23 @@ public class Item : ScriptableObject
 
 	new public string name = "New Item";    // Name of the item
 	public Sprite icon = null;              // Item icon
-	public bool isDefaultItem = false;      // Is the item default?
+	public bool isDefaultItem = false;		// Is the item default?
+	public bool isPlantable = false;        //is the item able to planted?
 
 	// Called when the item is pressed in the inventory
 	public virtual void Use()
 	{
+		if (isPlantable)
+		{
+			if (Input.GetMouseButtonDown(0))
+			{
+				HarvestingPlant harvestPlant = FindObjectOfType<HarvestingPlant>();
+
+				harvestPlant.StartCoroutine("harvestingRoutine");
+
+			}
+		}
+
 		// Use the item
 		// Something might happen
 
@@ -27,6 +39,11 @@ public class Item : ScriptableObject
 	public void RemoveFromInventory()
 	{
 		Inventory.instance.Remove(this);
+	}
+
+	void Update()
+	{
+		Use();
 	}
 
 }
