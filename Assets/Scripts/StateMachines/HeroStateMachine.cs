@@ -241,7 +241,7 @@ public class HeroStateMachine : MonoBehaviour
 	public void TakeDamage(float getDamageAmount)
 	{
 		//apply the damage to the hero based on the getDamageAmount
-		heroStats.Health -= getDamageAmount / heroStats.Defense;
+		heroStats.Health -= getDamageAmount - heroStats.Defense;
 		//check if the current hero is dead
 		if (heroStats.Health <= 0)
 		{

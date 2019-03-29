@@ -98,20 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24d9e0253b510b54f8265a757b5e6345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy:
-    theName: 'BOSS '
-    baseHp: 300
-    curHp: 300
-    baseMp: 100
-    curMp: 100
-    baseATK: 10
-    curATK: 10
-    baseDEF: 10
-    curDEF: 10
-    attacks:
-    - {fileID: 114964494905129484, guid: 71ebd01d2bc92e643977fa191a438763, type: 3}
-    EnemyType: 2
-    rarity: 0
+  enemyStats: {fileID: 0}
   currentState: 0
   Selector: {fileID: 4947378843529132728}
   HeroToAttack: {fileID: 0}

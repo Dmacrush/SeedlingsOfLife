@@ -222,8 +222,8 @@ public class EnemyStateMachine : MonoBehaviour
 
 	public void TakeDamage(float getDamageAmount) // Enemy takes damage from the hero
 	{
-		//Take the inputted damage from the enemies hp
-		enemyStats.Health -= getDamageAmount / enemyStats.Defense;
+        //Take the inputted damage from the enemies hp
+        enemyStats.Health -= getDamageAmount - enemyStats.Defense;
 		//Check if it the enemies current HP is less than equal to 0
 		if (enemyStats.Health <= 0)
 		{

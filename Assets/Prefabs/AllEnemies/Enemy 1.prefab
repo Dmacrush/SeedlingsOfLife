@@ -120,7 +120,7 @@ MonoBehaviour:
   Speed: 10
   Strength: 10
   Skill: 10
-  Defense: 10
+  Defense: 1
   Spirit: 10
   seedType: 0
   rarity: 0

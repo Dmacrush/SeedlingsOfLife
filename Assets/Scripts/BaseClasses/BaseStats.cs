@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class BaseStats : MonoBehaviour//BaseClass
+public class BaseStats : MonoBehaviour //BaseClass
 {
 	public string theName;
 	public Sprite image;
@@ -25,14 +25,6 @@ public class BaseStats : MonoBehaviour//BaseClass
 		Party,
 		Enemy
 	}
-
-	/*public enum Type
-	{
-		GRASS,
-		FIRE,
-		WATER,
-		ELECTRIC
-	}*/
 
 	public enum Rarity
 	{

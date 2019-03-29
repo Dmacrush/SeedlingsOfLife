@@ -11,8 +11,7 @@ public class MainMenu : MonoBehaviour
     
     public GameObject optionsMenuHolder;
     public GameObject quitHolder;
-    public GameObject loadLevelSelect;
-
+    
     public Slider[] volumeSliders;
     public Toggle[] resolutionToggles;
     public Toggle fullScreenToggle;
@@ -24,6 +23,10 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        playMenuHolder.SetActive(false);
+        optionsMenuHolder.SetActive(false);
+        quitHolder.SetActive(false);
+
         levelScript = FindObjectOfType<LevelScript>();
         activeScreenResIndex = PlayerPrefs.GetInt("screen res index");
         bool isFullscreen = (PlayerPrefs.GetInt("fullscreen") == 1 ? true : false);
@@ -42,19 +45,13 @@ public class MainMenu : MonoBehaviour
 
         fullScreenToggle.isOn = isFullscreen;
     }
-
-    public void PlayGame()
-    {
-        //put load level here when we finialise names
-        
-    }
-
+    
     public void DisplayPlayMenu()
     {
         playMenuHolder.SetActive(true);
         optionsMenuHolder.SetActive(false);
         quitHolder.SetActive(false);
-        loadLevelSelect.SetActive(false);
+       
     }
 
     public void DisplayQuitMenu()
@@ -62,7 +59,7 @@ public class MainMenu : MonoBehaviour
         playMenuHolder.SetActive(false);
         optionsMenuHolder.SetActive(false);
         quitHolder.SetActive(true);
-        loadLevelSelect.SetActive(false);
+       
     }
 
     public void DisPlayOptionsMenu()
@@ -70,7 +67,7 @@ public class MainMenu : MonoBehaviour
         playMenuHolder.SetActive(false);
         quitHolder.SetActive(false);
         optionsMenuHolder.SetActive(true);
-        loadLevelSelect.SetActive(false);
+       
     }
 
     public void Quit()
@@ -127,50 +124,11 @@ public class MainMenu : MonoBehaviour
         AudioManager.instance.SetVolume(value, AudioManager.AudioChannel.Sfx);
     }
 
-    public void LoadBattle()
+    public void LoadOverWorld()
     {
-        SceneManager.LoadScene("Battlelevel");
+        SceneManager.LoadScene("OverWorld");
     }
 
-    public void LoadLevelSelect()
-    {
-        loadLevelSelect.SetActive(true);
-        playMenuHolder.SetActive(false);
-
-        //if we want to save last played level
-        /*
-        if (PlayerPrefs.GetInt("Level Completed") >= 1)
-        {
-            levelScript.CurrentLevel = PlayerPrefs.GetInt("Level Completed");
-            SceneManager.LoadScene(levelScript.CurrentLevel);
-
-        }
-        else
-        {
-            SceneManager.LoadScene(1);    
-        }
-        */
-
-    }
-
-    public void LoadLevel1()
-    {
-        SceneManager.LoadScene("Level1");
-    }
-
-    public void LoadLevel2()
-    {
-        SceneManager.LoadScene("Level2");
-    }
-
-    public void LoadLevel3()
-    {
-        SceneManager.LoadScene("Level3");
-    }
-
-    public void LoadLevel4()
-    {
-        SceneManager.LoadScene("Level4");
-    }
+    
 }
 

@@ -41,7 +41,7 @@ public class PlayerController: MonoBehaviour
 		//Get the playermotor script attached to the player
 		thePlayerMotor = GetComponent<PlayerMotor>();
         //sets the position for gamemanger
-        transform.position = GameManager.instance.nextPlayerPosition;
+         transform.position = GameManager.instance.nextPlayerPosition;
     }
 
     void Update()

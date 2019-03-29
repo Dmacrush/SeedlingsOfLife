@@ -4,26 +4,29 @@ using UnityEngine;
 
 public class PartyManager : MonoBehaviour
 {
-	public List<OwnedSeedlings> ownedSeedlings = new List<OwnedSeedlings>();
+    public List<GameObject> seedlingsInParty = new List<GameObject>();
 
+    public int maxPartyMembers;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
+        if(seedlingsInParty.Count < maxPartyMembers)
+        {
+            //AddSeedling(gameObject);
+        }
+        else
+        {
+            return;
+        }
+
+        maxPartyMembers = seedlingsInParty.Count;
+        
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddSeedling (GameObject seedling)
     {
-        
+        seedlingsInParty.Add(seedling);
     }
 
-	[System.Serializable]
-	public class OwnedSeedlings
-	{
-		public BaseStats seedling;
-		public int Level;
-		public List<BaseAttack> moves = new List<BaseAttack>();
-	}
 }

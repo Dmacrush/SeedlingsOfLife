@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    private PartyManager partyManager;
+
     public RegionData currentRegion;
     public GameObject playerCharacter;
 
@@ -21,6 +23,9 @@ public class GameManager : MonoBehaviour
     public bool isWalking = false;
     public bool canEncounter = false;
     public bool gotAttacked = false;
+    public bool canBattle = true;
+
+    public int counter;
 
     public enum GameStates
     {
@@ -37,12 +42,7 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> playersToBattle = new List<GameObject>();
 
-	public List<BaseStats> allSeedlings = new List<BaseStats>();
-
-	public List<BaseAttack> allSeedlingMoves = new List<BaseAttack>();
-
-
-    public GameStates gameState;
+	public GameStates gameState;
 
     void Awake()
     {
@@ -59,7 +59,9 @@ public class GameManager : MonoBehaviour
         {
             GameObject player = Instantiate(playerCharacter, nextPlayerPosition, Quaternion.identity) as GameObject;
             player.name = "Player";
-        } 
+        }
+        canBattle = true;
+        partyManager = GetComponent<PartyManager>();
     }
 
     private void Update()
@@ -68,15 +70,17 @@ public class GameManager : MonoBehaviour
         {
             case (GameStates.WORLD_STATE):
                 {
-                    if(isWalking)
+                    
+                    if (isWalking && canBattle)
                     {
                         RandomEncounter();
                     }
-                    if(gotAttacked)
+                    if (gotAttacked)
                     {
                         gameState = GameStates.BATTLE_STATE;
                     }
                     break;
+                    
                 }
             case (GameStates.BATTLE_STATE):
                 {
@@ -118,23 +122,40 @@ public class GameManager : MonoBehaviour
 
     void StartBattle()
 	{
-		BaseStats battleSeedlings = GetRandomSeedlingFromList(GetSeedlingsByType(BaseStats.SeedlingType.Party));
-		Debug.Log(battleSeedlings.name);
-		BaseStats enemyBattleSeedlings = GetRandomSeedlingFromList(GetSeedlingsByType(BaseStats.SeedlingType.Enemy));
+		
 		//enemy reference here
 		//amount of enemies
 		enemyAmount = Random.Range(1, currentRegion.maxAmountEnemies + 1);
         //which enemies
         for(int i = 0; i < enemyAmount; i++)
         {
-            enemiesToBattle.Add(currentRegion.possibleEnemies[Random.Range(0, currentRegion.possibleEnemies.Count)]);
+            if (counter <= partyManager.maxPartyMembers)
+            {
+                enemiesToBattle.Add(currentRegion.possibleEnemies[Random.Range(0, currentRegion.possibleEnemies.Count)]);
+                counter++;
+            }
+            else if (counter > partyManager.maxPartyMembers)
+            {
+                break;
+            }
+            counter = 0;
         }
+
         //amount of players
-		playerAmount = Random.Range(1, currentRegion.maxAmountPlayers + 1);
+        playerAmount = partyManager.maxPartyMembers;
         //which players
         for (int i = 0; i < playerAmount; i++)
         {
-            playersToBattle.Add(currentRegion.possiblePlayers[Random.Range(0, currentRegion.possiblePlayers.Count)]);
+            if(counter <= partyManager.maxPartyMembers)
+            {
+                playersToBattle.Add(partyManager.seedlingsInParty[counter]);
+                counter++;
+            }
+            else if(counter > partyManager.maxPartyMembers)
+            {
+                break;
+            }
+            counter = 0;
         }
 
 
@@ -146,29 +167,6 @@ public class GameManager : MonoBehaviour
         gotAttacked = false;
         canEncounter = false;
     }
-
-	public List<BaseStats> GetSeedlingsByType(BaseStats.SeedlingType seedlingType)
-	{
-		List<BaseStats> returnSeedlings = new List<BaseStats>();
-		foreach (BaseStats Seedling in allSeedlings)
-		{
-			if (Seedling.seedType == seedlingType)
-			{
-				returnSeedlings.Add(Seedling);
-			}
-		}
-
-		return returnSeedlings;
-	}
-
-	public BaseStats GetRandomSeedlingFromList(List<BaseStats> seedlingList)
-	{
-		BaseStats seed = new BaseStats();
-		//get a random seedling from the list of seedlings in BaseStats. Change this to get a set one.
-		int seedlingIndex = Random.Range(0, seedlingList.Count - 1);
-		seed = seedlingList[seedlingIndex];
-		return seed;
-	}
 
 	[System.Serializable]
 	public class SeedlingMoves
@@ -191,4 +189,11 @@ public class GameManager : MonoBehaviour
 		Physical,
 		Skill,
 	}
+
+    public IEnumerator BattleCoolDown()
+    {
+        canBattle = false;
+        yield return new WaitForSeconds(3f);
+        canBattle = true;
+    }
 }

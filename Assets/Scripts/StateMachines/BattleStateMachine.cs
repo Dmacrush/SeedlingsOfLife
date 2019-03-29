@@ -86,6 +86,9 @@ public class BattleStateMachine : MonoBehaviour
 	public Transform skillSpacer;
 	public GameObject actionButton;
 	public GameObject skillButton;
+    public GameObject healButton;
+    public GameObject runButton;
+
 	private List<GameObject> atkBtns = new List<GameObject>();
 
     //enemy buttons
@@ -236,6 +239,7 @@ public class BattleStateMachine : MonoBehaviour
                         HerosInBattle[i].GetComponent<HeroStateMachine>().currentState = HeroStateMachine.TurnState.WAITING;
 
                     }
+                    StartCoroutine(GameManager.instance.BattleCoolDown());
 
                     GameManager.instance.LoadSceneAfterBattle();
                     GameManager.instance.gameState = GameManager.GameStates.WORLD_STATE;
@@ -412,9 +416,35 @@ public class BattleStateMachine : MonoBehaviour
 		//add an attack button to the list of buttons.
 		atkBtns.Add(SkillAttackButton);
 
+        /*
+        //Spawn the action button
+        GameObject HealButton = Instantiate(healButton) as GameObject;
+        //Find the attack button transform, find the Text attached to the button and get the Text component
+        Text HealButtonText = HealButton.transform.Find("AttackBTNtext").gameObject.GetComponent<Text>();
+        //Set the attack button text to Skill
+        HealButtonText.text = "Heal";
+        //Get the button component, add a listener to the button. On click run the Input1 function from in this script
+        HealButton.GetComponent<Button>().onClick.AddListener(() => Input5());
+        //Set the attack buttons transform according to the parent spacer
+        HealButton.transform.SetParent(actionSpacer, false);
+        //add an attack button to the list of buttons.
+        atkBtns.Add(HealButton);
+        */
+        //Spawn the action button
+        GameObject RunButton = Instantiate(actionButton) as GameObject;
+        //Find the attack button transform, find the Text attached to the button and get the Text component
+        Text RunButtonText = RunButton.transform.Find("AttackBTNtext").gameObject.GetComponent<Text>();
+        //Set the attack button text to Skill
+        RunButtonText.text = "Run";
+        //Get the button component, add a listener to the button. On click run the Input1 function from in this script
+        RunButton.GetComponent<Button>().onClick.AddListener(() => RunAway());
+        //Set the attack buttons transform according to the parent spacer
+        RunButton.transform.SetParent(actionSpacer, false);
+        //add an attack button to the list of buttons.
+        atkBtns.Add(RunButton);
 
-		//check if the player at the top of the list of heros to manage is the first in the list and the skill used is 0 then
-		if (HerosToManage[0].GetComponent<HeroStateMachine>().heroStats.skillAttacks.Count > 0)
+        //check if the player at the top of the list of heros to manage is the first in the list and the skill used is 0 then
+        if (HerosToManage[0].GetComponent<HeroStateMachine>().heroStats.skillAttacks.Count > 0)
 		{
 			// for each skill attack in the Base Attack script that is attached to a hero
 			foreach (BaseAttack skillAtk in HerosToManage[0].GetComponent<HeroStateMachine>().heroStats.skillAttacks)
@@ -473,8 +503,28 @@ public class BattleStateMachine : MonoBehaviour
 
 	}
 
+    public void Input5(BaseAttack chosenSkill)
+    {
+        //get the hero attackers name /// THE HERO WHO IS ATTACKING
+		HeroChoice.Attacker = HerosToManage[0].name;
+		//WHICH HERO IS ATTACKING
+		HeroChoice.AttackersGameObject = HerosToManage[0];
+        
+		//IS THE OBJECT DOING THE ATTACK A HERO?
+		HeroChoice.Type = "Hero";
+        //Set the current attacking hero's selected attack to the chosen skill
+        HeroChoice.chosenAttack = chosenSkill;
+
+        //set the attack panel visibility to false
+        AttackPanel.SetActive(false);
+		//set the skill panels visibility to false(hide it)
+		SkillPanel.SetActive(false);
+		
+    }
+
     public void RunAway()
     {
+        StartCoroutine(GameManager.instance.BattleCoolDown());
         GameManager.instance.LoadSceneAfterBattle();
         GameManager.instance.gameState = GameManager.GameStates.WORLD_STATE;
         GameManager.instance.enemiesToBattle.Clear();

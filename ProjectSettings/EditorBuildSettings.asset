@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: d57823282d6295a488fcc532c9224eb0
   - enabled: 1
-    path: Assets/Scenes/Level1.unity
+    path: Assets/Scenes/OverWorld.unity
     guid: 54f74c3836621da44bd70eddc0b26006
   - enabled: 1
     path: Assets/Scenes/BattleLevel.unity
