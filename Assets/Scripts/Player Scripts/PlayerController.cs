@@ -7,8 +7,13 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(PlayerMotor))]
 public class PlayerController: MonoBehaviour
 {
-	//Reference to the camera
-	public Camera cam;
+    [FMODUnity.EventRef]
+    public string selectsound;
+    FMOD.Studio.EventInstance soundevent;
+
+
+    //Reference to the camera
+    public Camera cam;
 	//Player move speed value
     public float moveSpeed;
 	//Input value
@@ -34,7 +39,9 @@ public class PlayerController: MonoBehaviour
 
     void Start()
     {
-		//get the attached rigidbody component
+        soundevent = FMODUnity.RuntimeManager.CreateInstance(selectsound);
+
+        //get the attached rigidbody component
         rb = GetComponent<Rigidbody>();
 		//Find the camera in the scene & attach it to the player
 		cam = FindObjectOfType<Camera>();
@@ -46,8 +53,13 @@ public class PlayerController: MonoBehaviour
 
     void Update()
     {
-		//check if we are hovering over the ui, if we are then stop the player from moving
-		if (EventSystem.current.IsPointerOverGameObject())
+        if (GameManager.instance.isWalking == false)
+        {
+            FMODUnity.RuntimeManager.AttachInstanceToGameObject(soundevent, GetComponent<Transform>(), GetComponent<Rigidbody>());
+            soundevent.start();
+        }
+        //check if we are hovering over the ui, if we are then stop the player from moving
+        if (EventSystem.current.IsPointerOverGameObject())
 		{
 			return;
 		}

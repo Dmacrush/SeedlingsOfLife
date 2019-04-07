@@ -122,7 +122,13 @@ public class GameManager : MonoBehaviour
 
     void StartBattle()
 	{
+<<<<<<< Updated upstream
 		
+=======
+		BaseStats battleSeedlings = GetRandomSeedlingFromList(GetSeedlingsByType(BaseStats.SeedlingType.Party));
+		Debug.Log(battleSeedlings.name);
+		//BaseStats enemyBattleSeedlings = GetRandomSeedlingFromList(GetSeedlingsByType(BaseStats.SeedlingType.Enemy));
+>>>>>>> Stashed changes
 		//enemy reference here
 		//amount of enemies
 		enemyAmount = Random.Range(1, currentRegion.maxAmountEnemies + 1);
