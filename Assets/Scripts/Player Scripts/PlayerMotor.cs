@@ -11,7 +11,7 @@ public class PlayerMotor : MonoBehaviour
 	private NavMeshAgent agent;
 
 	//Target Reference
-	private Transform target;
+	public Transform target;
 
 	// Start is called before the first frame update
 	void Start()

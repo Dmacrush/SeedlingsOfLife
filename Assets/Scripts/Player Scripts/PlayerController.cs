@@ -7,13 +7,8 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(PlayerMotor))]
 public class PlayerController: MonoBehaviour
 {
-    [FMODUnity.EventRef]
-    public string selectsound;
-    FMOD.Studio.EventInstance soundevent;
-
-
-    //Reference to the camera
-    public Camera cam;
+	//Reference to the camera
+	public Camera cam;
 	//Player move speed value
     public float moveSpeed;
 	//Input value
@@ -35,13 +30,19 @@ public class PlayerController: MonoBehaviour
 	//Keep track of what is being focused on
 	public Interactable focus;
 
-    
+    /*
+    void OnDrawGizmosSelected()
+    {
+        // Draws a 5 unit long red line in front of the object
+        Gizmos.color = Color.red;
+        Vector3 direction = transform.TransformDirection(Vector3.forward) * 5;
+        Gizmos.DrawLine(transform.position, thePlayerMotor.target.);
+    }
+    */
 
     void Start()
     {
-        soundevent = FMODUnity.RuntimeManager.CreateInstance(selectsound);
-
-        //get the attached rigidbody component
+		//get the attached rigidbody component
         rb = GetComponent<Rigidbody>();
 		//Find the camera in the scene & attach it to the player
 		cam = FindObjectOfType<Camera>();
@@ -53,13 +54,8 @@ public class PlayerController: MonoBehaviour
 
     void Update()
     {
-        if (GameManager.instance.isWalking == false)
-        {
-            FMODUnity.RuntimeManager.AttachInstanceToGameObject(soundevent, GetComponent<Transform>(), GetComponent<Rigidbody>());
-            soundevent.start();
-        }
-        //check if we are hovering over the ui, if we are then stop the player from moving
-        if (EventSystem.current.IsPointerOverGameObject())
+		//check if we are hovering over the ui, if we are then stop the player from moving
+		if (EventSystem.current.IsPointerOverGameObject())
 		{
 			return;
 		}
@@ -76,11 +72,13 @@ public class PlayerController: MonoBehaviour
 			//Cast a ray from the camera towards whatever we have clicked on
 			Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 			//store the info detected in a raycast variable
+            
 			RaycastHit hit;
 			//if the ray hits something then run the next lines of code
 			if (Physics.Raycast(ray, out hit, 100, movementMask))
 			{
 				//move the player to a point
+                
 				thePlayerMotor.MoveToPoint(hit.point);
 				Debug.Log(("We hit" + hit.collider.name + " " + hit.point));
 				StopFocusing();
@@ -135,7 +133,8 @@ public class PlayerController: MonoBehaviour
             GameManager.instance.isWalking = true;
         }
         lastPosition = currentPosition;
-
+        
+       
         /*
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");

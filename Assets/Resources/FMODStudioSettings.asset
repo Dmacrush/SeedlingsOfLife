@@ -61,13 +61,4 @@ MonoBehaviour:
   Plugins: []
   MasterBanks:
   - Master Bank
-  Banks:
-  - Combat
-  - Planting
-  - Menu
-  - Inventory
-  - Stage
-  - Wheel
-  - Atmos
-  - Movement
-  - Music
+  Banks: []

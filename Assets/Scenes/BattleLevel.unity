@@ -1252,7 +1252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: event:/Menu_Back_Weak_Short
+  Event: event:/ButtonPush
   PlayEvent: 0
   StopEvent: 0
   CollisionTag: 
@@ -8388,7 +8388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: event:/Menu_Back_Weak_Short
+  Event: event:/ButtonPush
   PlayEvent: 0
   StopEvent: 0
   CollisionTag: 
@@ -9742,7 +9742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: event:/Menu_Yes_Strong_Short
+  Event: event:/ButtonPush
   PlayEvent: 0
   StopEvent: 0
   CollisionTag: 
