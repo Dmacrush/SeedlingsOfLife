@@ -70,7 +70,6 @@ MonoBehaviour:
   - {fileID: 114452650480011864}
   - {fileID: 114858363909787158}
   - {fileID: 114502996236719874}
-  - {fileID: 114170335956262956}
   - {fileID: 114551218794737798}
   - {fileID: 114450915444050890}
   - {fileID: 114298054124365570}
@@ -84,12 +83,117 @@ MonoBehaviour:
   - {fileID: 114845168461936754}
   - {fileID: 114354098522398310}
   - {fileID: 114779326892175834}
+  - {fileID: 114837300581322046}
+  - {fileID: 114906274502622370}
+  - {fileID: 114912717657783560}
+  - {fileID: 114463215043226846}
+  - {fileID: 114189695602949906}
+  - {fileID: 114097943547828056}
+  - {fileID: 114662302812778686}
+  - {fileID: 114795072169805182}
+  - {fileID: 114950896867402306}
+  - {fileID: 114356989978040392}
+  - {fileID: 114333613184388538}
+  - {fileID: 114537587727589032}
+  - {fileID: 114365175580976504}
+  - {fileID: 114498657827836134}
+  - {fileID: 114459220041386084}
+  - {fileID: 114552984346169432}
+  - {fileID: 114450821656494566}
+  - {fileID: 114936496456895370}
+  - {fileID: 114002758460037934}
+  - {fileID: 114497364451752160}
+  - {fileID: 114384337898540040}
+  - {fileID: 114012192021039726}
+  - {fileID: 114538910796670520}
+  - {fileID: 114428668395888148}
+  - {fileID: 114035426501506634}
+  - {fileID: 114990683084323138}
+  - {fileID: 114544327652536300}
+  - {fileID: 114419350176863658}
+  - {fileID: 114415090733570556}
+  - {fileID: 114588784027429950}
+  - {fileID: 114032310261932426}
+  - {fileID: 114930940684599506}
+  - {fileID: 114875173321909840}
+  - {fileID: 114567614534579868}
+  - {fileID: 114080806626101348}
+  - {fileID: 114812621582019458}
   MasterBanks:
   - {fileID: 114664729078626916}
   StringsBanks:
   - {fileID: 114192371798520188}
-  stringsBankWriteTime: 636888547524754631
+  stringsBankWriteTime: 636906066406104352
   cacheVersion: 3
+--- !u!114 &114002758460037934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Twig_06
+  guid: 9c9594f9bf44954ab833c4c683891ac7
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 413
+--- !u!114 &114012192021039726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Twig_09
+  guid: b3d5bcffabf6e343b8f01b61b06e7a4f
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 528
+--- !u!114 &114032310261932426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Twig_03
+  guid: efbdeb19258dc940ba235ab579708382
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 677
 --- !u!114 &114032998730980500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +217,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2090
+--- !u!114 &114035426501506634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Dry Leaves_07
+  guid: b9e7486f46ffe2478b7839eae36ab3bb
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 317
 --- !u!114 &114037536206979980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\cancer\SeedlingsOfLife\SOLFMOD\Build\Desktop\Stage.bank
-  lastModified: 636888547528255264
+  lastModified: 636906066468146472
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -201,6 +328,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1397
+--- !u!114 &114080806626101348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Gravel_01 2D
+  guid: ad41827a778522439affa8a69215eb2a
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 630
 --- !u!114 &114091440630065400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +374,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 153045
+--- !u!114 &114097943547828056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Twig_04
+  guid: 18b1c733d0deb445a495b55c55fc006f
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 642
 --- !u!114 &114112246554861362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,7 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\cancer\SeedlingsOfLife\SOLFMOD\Build\Desktop\Atmos.bank
-  lastModified: 636888547527606996
+  lastModified: 636906066407585540
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -371,7 +544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\cancer\SeedlingsOfLife\SOLFMOD\Build\Desktop\Wheel.bank
-  lastModified: 636888547529083044
+  lastModified: 636906066468404862
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -390,7 +563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\cancer\SeedlingsOfLife\SOLFMOD\Build\Desktop\Combat.bank
-  lastModified: 636888547526509929
+  lastModified: 636906066408144066
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -419,6 +592,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 741
+--- !u!114 &114189695602949906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Dry Leaves_02
+  guid: 10a02f32c9f38d46b664827144857b41
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 400
 --- !u!114 &114192371798520188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,11 +628,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: SOLFMOD\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636888547524754631
+  lastModified: 636906066406104352
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 3816
+    Value: 5108
   Exists: 1
 --- !u!114 &114230988647398562
 MonoBehaviour:
@@ -645,6 +841,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 734
+--- !u!114 &114333613184388538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Dry Leaves_11
+  guid: 674f1ad002db6d4a8d863c4d47eab717
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 370
 --- !u!114 &114354098522398310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -668,6 +887,75 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 166000
+--- !u!114 &114356989978040392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Dry Leaves_05
+  guid: 65880697fe120345907271b09318930a
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 402
+--- !u!114 &114365175580976504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Dry Leaves_03
+  guid: 74043d39a3fc8044bd72644a16b94d06
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 386
+--- !u!114 &114384337898540040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Gravel_04
+  guid: b0489a5b11a9a04ab18a277d3262f236
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 653
 --- !u!114 &114411108959857906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -691,6 +979,75 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 241975
+--- !u!114 &114415090733570556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Gravel_07
+  guid: e48a8ec20a48ba47a9b58827ce6c16f7
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 736
+--- !u!114 &114419350176863658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Twig_01
+  guid: d92f4601971bae4586b4af1b86a5ae78
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 634
+--- !u!114 &114428668395888148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Dry Leaves_08
+  guid: b9e505d76fc126438c291fcf8d92d4ad
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 496
 --- !u!114 &114446235907366200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -714,6 +1071,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2474
+--- !u!114 &114450821656494566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Dry Leaves_09
+  guid: 8221e13b8db1a84dbd896e054a509f59
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 448
 --- !u!114 &114450915444050890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -760,6 +1140,98 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 313
+--- !u!114 &114459220041386084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Gravel_01
+  guid: 74390dc7d11d7d48aa37650c3f64899f
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 10000
+  Length: 630
+--- !u!114 &114463215043226846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Dry Leaves_06
+  guid: 0d551c50127b2d479b3e7989c2af9f57
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 368
+--- !u!114 &114497364451752160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Dry Leaves_04
+  guid: a9f6dda647d38f44b44bf84aded1d969
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 386
+--- !u!114 &114498657827836134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Dry Leaves_01
+  guid: 740ef721b4128242a38680cd41988f5d
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 432
 --- !u!114 &114502996236719874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -806,6 +1278,75 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 688
+--- !u!114 &114537587727589032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Gravel_05
+  guid: 7335a0be1565054d9c02bb19db3a427a
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 484
+--- !u!114 &114538910796670520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Twig_11
+  guid: b6fafa4e8a6b4843b8493db2aaeaa968
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 466
+--- !u!114 &114544327652536300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Gravel_09
+  guid: c6728184395d8840892cf0f0f07adb74
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 481
 --- !u!114 &114551218794737798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -829,6 +1370,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 471
+--- !u!114 &114552984346169432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Twig_02
+  guid: 7ad03dabb1671043ac22efd1d5184a35
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 682
 --- !u!114 &114557811601896922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -852,6 +1416,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 673
+--- !u!114 &114567614534579868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Item_Pickup
+  guid: fa403f6693b68247bfd3b3e8b7e7f9b1
+  Banks:
+  - {fileID: 114938389178363454}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 360
 --- !u!114 &114579486585513324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -921,6 +1508,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1397
+--- !u!114 &114588784027429950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Gravel_03
+  guid: e7c120f9f7aba440b06ba38550d7728e
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 616
 --- !u!114 &114593287624845104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -980,11 +1590,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\cancer\SeedlingsOfLife\SOLFMOD\Build\Desktop\Menu.bank
-  lastModified: 636888547525293254
+  lastModified: 636906066466100942
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 312032
+    Value: 2484416
   Exists: 1
 --- !u!114 &114630635840141348
 MonoBehaviour:
@@ -1045,12 +1655,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\cancer\SeedlingsOfLife\SOLFMOD\Build\Desktop\Movement.bank
-  lastModified: 636888547528853731
+  lastModified: 636906066467128288
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 172352
+    Value: 451712
   Exists: 1
+--- !u!114 &114662302812778686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Dry Leaves_12
+  guid: 1ffe0c73c231134ea77c1fa9e3e91744
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 376
 --- !u!114 &114664273418168008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1087,7 +1720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\cancer\SeedlingsOfLife\SOLFMOD\Build\Desktop\Master Bank.bank
-  lastModified: 636888547524704759
+  lastModified: 636906066405994694
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -1106,7 +1739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\cancer\SeedlingsOfLife\SOLFMOD\Build\Desktop\Music.bank
-  lastModified: 636888547528225362
+  lastModified: 636906066467786532
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -1217,7 +1850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\cancer\SeedlingsOfLife\SOLFMOD\Build\Desktop\Planting.bank
-  lastModified: 636888547526021262
+  lastModified: 636906066468086628
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -1315,6 +1948,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 448
+--- !u!114 &114795072169805182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Twig_07
+  guid: 33616816c228e640860e59f64c0f79b4
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 629
 --- !u!114 &114796834530134994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1384,6 +2040,52 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2250
+--- !u!114 &114812621582019458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience_Evil
+  guid: a54e8669f6ec2b4ca4b01f202d86d88b
+  Banks:
+  - {fileID: 114620717662018898}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 174762
+--- !u!114 &114837300581322046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Dry Leaves_10
+  guid: 00cf8e553306394ba3586debcb8ffdf3
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 488
 --- !u!114 &114845168461936754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1545,6 +2247,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 5717
+--- !u!114 &114875173321909840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Twig_10
+  guid: f9c608c65cc13a48bed799e63d50261d
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 586
 --- !u!114 &114902285694931812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1568,6 +2293,52 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 295
+--- !u!114 &114906274502622370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Twig_12
+  guid: 00e73f212352e2419936d01981316a52
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 506
+--- !u!114 &114912717657783560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Gravel_06
+  guid: 08c6cd7e2920eb4194faced4e0d491bf
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 441
 --- !u!114 &114916062424172826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1591,6 +2362,52 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 112362
+--- !u!114 &114930940684599506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Gravel_08
+  guid: f2f91f2ff4b1e14c8f63267a9a32b1c9
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 466
+--- !u!114 &114936496456895370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Gravel_02
+  guid: 8fe0605f721e0a41a5633260a00dc6ac
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 598
 --- !u!114 &114938389178363454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1604,12 +2421,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\cancer\SeedlingsOfLife\SOLFMOD\Build\Desktop\Inventory.bank
-  lastModified: 636888547525732025
+  lastModified: 636906066408622790
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 51200
+    Value: 51680
   Exists: 1
+--- !u!114 &114950896867402306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Twig_08
+  guid: 3d4a9b3aa14ce544aed8f273634ece2b
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 586
 --- !u!114 &114965507045503120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1656,3 +2496,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 610
+--- !u!114 &114990683084323138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Steps_Twig_05
+  guid: c0dd38f3b8d1904c90567fe39d6bae4b
+  Banks:
+  - {fileID: 114658376574434298}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 533

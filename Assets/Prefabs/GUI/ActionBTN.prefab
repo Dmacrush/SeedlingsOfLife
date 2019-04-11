@@ -198,8 +198,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3226863494652390080}
-        m_MethodName: 
+      - m_Target: {fileID: 8285295494174609522}
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: event:/ButtonPush
+  Event: event:/Menu_No_Weak_Short
   PlayEvent: 0
   StopEvent: 0
   CollisionTag: 

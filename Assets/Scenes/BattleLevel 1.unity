@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2728,6 +2728,7 @@ GameObject:
   - component: {fileID: 1192439243}
   - component: {fileID: 1192439242}
   - component: {fileID: 1192439245}
+  - component: {fileID: 1192439246}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2812,6 +2813,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ListenerNumber: 0
+--- !u!114 &1192439246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192439241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Growth
+  PlayEvent: 1
+  StopEvent: 0
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &1210458781
 GameObject:
   m_ObjectHideFlags: 0
@@ -3985,11 +4009,15 @@ MonoBehaviour:
     type: 3}
   skillButton: {fileID: 8939382182856419160, guid: 22b3a09a3831f6840bf1261ea8ac6a0a,
     type: 3}
+  healButton: {fileID: 0}
+  runButton: {fileID: 0}
   spawnPoints:
   - {fileID: 1933410656}
   - {fileID: 989772417}
   - {fileID: 1285516443}
   - {fileID: 1419907310}
+  spawnPointsPlayer: []
+  theBaseStats: {fileID: 0}
 --- !u!4 &1469143044
 Transform:
   m_ObjectHideFlags: 0
@@ -4016,6 +4044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 854b97303b02ec8448f8ac4c996a86c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectsound: 
   PauseMenuHolder: {fileID: 803945998}
 --- !u!114 &1469143046
 MonoBehaviour:

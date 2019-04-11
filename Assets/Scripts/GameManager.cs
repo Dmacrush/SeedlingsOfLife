@@ -7,6 +7,11 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [FMODUnity.EventRef]
+    public string selectsound;
+    FMOD.Studio.EventInstance soundevent;
+
+
     public static GameManager instance;
 
     private PartyManager partyManager;
@@ -43,6 +48,12 @@ public class GameManager : MonoBehaviour
     public List<GameObject> playersToBattle = new List<GameObject>();
 
 	public GameStates gameState;
+
+    private void Start()
+    {
+        soundevent = FMODUnity.RuntimeManager.CreateInstance(selectsound);
+
+    }
 
     void Awake()
     {
@@ -95,6 +106,12 @@ public class GameManager : MonoBehaviour
                 }
             
         }
+        if (GameManager.instance.isWalking == false)
+        {
+            FMODUnity.RuntimeManager.AttachInstanceToGameObject(soundevent, GetComponent<Transform>(), GetComponent<Rigidbody>());
+            soundevent.start();
+        }
+
     }
 
     public void LoadNextScene()

@@ -8,8 +8,13 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(PlayerMotor))]
 public class PlayerController : MonoBehaviour
 {
-	//Reference to the camera
-	public Camera cam;
+    //Movement Sounds
+    [FMODUnity.EventRef]
+    public string PickedUp;
+    FMOD.Studio.EventInstance pickup;
+
+    //Reference to the camera
+    public Camera cam;
 
 	//Player move speed value
 	public float moveSpeed;
@@ -51,8 +56,9 @@ public class PlayerController : MonoBehaviour
 
 	void Start()
 	{
-		//get the attached rigidbody component
-		rb = GetComponent<Rigidbody>();
+        pickup = FMODUnity.RuntimeManager.CreateInstance(PickedUp);
+        //get the attached rigidbody component
+        rb = GetComponent<Rigidbody>();
 		//Find the camera in the scene & attach it to the player
 		cam = FindObjectOfType<Camera>();
 		//Get the playermotor script attached to the player
@@ -66,8 +72,9 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
 	{
-		//input variable  = movement made on the horizontal or vertical axis
-		input = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+
+        //input variable  = movement made on the horizontal or vertical axis
+        input = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
 		//set the players velocity to the detected input multiplied by the move speed
 		playerVelocity = input * moveSpeed;
 
@@ -85,10 +92,10 @@ public class PlayerController : MonoBehaviour
 			{
 				//move the player to a point
 				thePlayerMotor.MoveToPoint(hit.point);
-				//Debug.Log(("We hit" + hit.collider.name + " " + hit.point));
-				//StopFocusing();
-				//stop focusing on any objects
-			}
+                //Debug.Log(("We hit" + hit.collider.name + " " + hit.point));
+                //StopFocusing();
+                //stop focusing on any objects
+            }
 		}
 
 		//RIGHT MOUSE BUTTON USED FOR INTERACTING
@@ -102,7 +109,7 @@ public class PlayerController : MonoBehaviour
 			//if the ray hits something then run the next lines of code
 			if (Physics.Raycast(ray, out hit, 100))
 			{
-				Debug.Log("Code Got Here");
+                Debug.Log("Code Got Here");
 				//theInventory.AddItem(myCurrentItem);
 				//myCurrentItem.OnPickUp();
 				//theHud.CloseMessagePanel();
@@ -114,7 +121,9 @@ public class PlayerController : MonoBehaviour
 				if (myInteractableItem != null)
 				{
 					myInteractableItem.OnInteract();
-				}
+                    FMODUnity.RuntimeManager.AttachInstanceToGameObject(pickup, GetComponent<Transform>(), GetComponent<Rigidbody>());
+                    pickup.start();
+                }
 
 				//focus on an object
 				//Collect an item
@@ -230,9 +239,10 @@ public class PlayerController : MonoBehaviour
 				InventoryItemBase inventoryItem = myInteractableItem as InventoryItemBase;
 				theInventory.AddItem(inventoryItem);
 				inventoryItem.OnPickUp();
+                
 
 
-				if (inventoryItem.UseItemAfterPickup)
+                if (inventoryItem.UseItemAfterPickup)
 				{
 					theInventory.UseItem(inventoryItem);
 				}

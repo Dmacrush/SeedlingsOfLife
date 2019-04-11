@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    [FMODUnity.EventRef]
+    public string selectsound;
+    FMOD.Studio.EventInstance soundevent;
+
     public GameObject PauseMenuHolder;
     public static bool GameIsPaused = false;
 
@@ -12,7 +16,10 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(GameIsPaused)
+            FMODUnity.RuntimeManager.AttachInstanceToGameObject(soundevent, GetComponent<Transform>(), GetComponent<Rigidbody>());
+            soundevent.start();
+
+            if (GameIsPaused)
             {
                 Resume();
             }
@@ -21,6 +28,11 @@ public class PauseMenu : MonoBehaviour
                 PauseGame();
             }
         }
+    }
+
+    public void Start()
+    {
+        soundevent = FMODUnity.RuntimeManager.CreateInstance(selectsound);
     }
 
     public void PauseGame()

@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f02adba4ab9d8ab4885b5ea8ab8d28d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dead: event:/Death (Placeholder)
+  hurt: event:/ATtack (2)
   heroStats: {fileID: 5812107481576817296}
   currentState: 0
   currentCoolDown: 0

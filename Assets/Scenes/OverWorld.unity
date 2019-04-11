@@ -2844,6 +2844,8 @@ GameObject:
   - component: {fileID: 1728564187}
   - component: {fileID: 1728564192}
   - component: {fileID: 1728564193}
+  - component: {fileID: 1728564194}
+  - component: {fileID: 1728564195}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2962,6 +2964,42 @@ MonoBehaviour:
   minZoom: 5
   maxZoom: 15
   pitch: 2
+--- !u!114 &1728564194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728564186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/ATMOS_Riverside Forest
+  PlayEvent: 1
+  StopEvent: 12
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1728564195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728564186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: 1
 --- !u!1001 &1739115969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3576,21 +3614,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 8649582441818902615, guid: f233da3c45ff8d746a5500d4aa096b81,
-        type: 3}
-      propertyPath: PauseMenuHolder
-      value: 
-      objectReference: {fileID: 1968206983}
-    - target: {fileID: 8151015406318713584, guid: f233da3c45ff8d746a5500d4aa096b81,
-        type: 3}
-      propertyPath: seedlingsInParty.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8151015406318713584, guid: f233da3c45ff8d746a5500d4aa096b81,
-        type: 3}
-      propertyPath: maxPartyMembers
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 2685023834877916573, guid: f233da3c45ff8d746a5500d4aa096b81,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3646,6 +3669,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2685023834877916572, guid: f233da3c45ff8d746a5500d4aa096b81,
+        type: 3}
+      propertyPath: selectsound
+      value: event:/Steps_Gravel_01 2D
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151015406318713584, guid: f233da3c45ff8d746a5500d4aa096b81,
+        type: 3}
+      propertyPath: seedlingsInParty.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151015406318713584, guid: f233da3c45ff8d746a5500d4aa096b81,
+        type: 3}
+      propertyPath: maxPartyMembers
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8649582441818902615, guid: f233da3c45ff8d746a5500d4aa096b81,
+        type: 3}
+      propertyPath: PauseMenuHolder
+      value: 
+      objectReference: {fileID: 1968206983}
     m_RemovedComponents:
     - {fileID: 8649582441818902615, guid: f233da3c45ff8d746a5500d4aa096b81, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f233da3c45ff8d746a5500d4aa096b81, type: 3}
@@ -4768,6 +4811,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7601262961203735869, guid: d4a33668508d36d49a9aa7255892e9cb,
+        type: 3}
+      propertyPath: selectsound
+      value: event:/Item_Pickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 7601262961203735869, guid: d4a33668508d36d49a9aa7255892e9cb,
+        type: 3}
+      propertyPath: PickedUp
+      value: event:/Item_Pickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 7601262961203735869, guid: d4a33668508d36d49a9aa7255892e9cb,
+        type: 3}
+      propertyPath: Walking
+      value: event:/Steps_Gravel_01 2D
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4a33668508d36d49a9aa7255892e9cb, type: 3}
