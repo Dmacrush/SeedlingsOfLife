@@ -1018,13 +1018,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd2a42f48ff5924b8d63aaac228ee3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PickedUp: 
   cam: {fileID: 0}
-  moveSpeed: 0
+  moveSpeed: 10
   playerVelocity: {x: 0, y: 0, z: 0}
+  thePlayerMotor: {fileID: 7601262961203735870}
   movementMask:
     serializedVersion: 2
     m_Bits: 512
-  focus: {fileID: 0}
+  theInventory: {fileID: 0}
+  playersHand: {fileID: 0}
+  theHud: {fileID: 0}
 --- !u!114 &7601262961203735870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1037,6 +1041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0c9009dcefb082499b88f5c20232e4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
 --- !u!114 &7601262961203735871
 MonoBehaviour:
   m_ObjectHideFlags: 0

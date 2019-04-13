@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 	Vector3 lastPosition;
 
 	//Reference to the PlayerMotor Script
-	private PlayerMotor thePlayerMotor;
+	public PlayerMotor thePlayerMotor;
 
 	//Player LayerMask reference
 	public LayerMask movementMask;
@@ -52,9 +52,9 @@ public class PlayerController : MonoBehaviour
 
 	private InventoryItemBase myCurrentItem = null;
 
+    
 
-
-	void Start()
+    void Start()
 	{
         pickup = FMODUnity.RuntimeManager.CreateInstance(PickedUp);
         //get the attached rigidbody component
@@ -63,8 +63,8 @@ public class PlayerController : MonoBehaviour
 		cam = FindObjectOfType<Camera>();
 		//Get the playermotor script attached to the player
 		thePlayerMotor = GetComponent<PlayerMotor>();
-		//sets the position for gamemanger
-		transform.position = GameManager.instance.nextPlayerPosition;
+        //sets the position for gamemanger
+        transform.position = GameManager.instance.nextPlayerPosition;
 
 		theInventory.ItemUsed += Inventory_ItemUsed;
 		theInventory.ItemRemoved += Inventory_ItemRemoved;
@@ -74,9 +74,9 @@ public class PlayerController : MonoBehaviour
 	{
 
         //input variable  = movement made on the horizontal or vertical axis
-        input = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+        //input = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
 		//set the players velocity to the detected input multiplied by the move speed
-		playerVelocity = input * moveSpeed;
+		//playerVelocity = input * moveSpeed;
 
 		//LEFT MOUSE BUTTON USED FOR MOVEMENT
 
@@ -90,9 +90,9 @@ public class PlayerController : MonoBehaviour
 			//if the ray hits something then run the next lines of code
 			if (Physics.Raycast(ray, out hit, 100, movementMask))
 			{
-				//move the player to a point
-				thePlayerMotor.MoveToPoint(hit.point);
-                //Debug.Log(("We hit" + hit.collider.name + " " + hit.point));
+                //move the player to a point
+                thePlayerMotor.MoveToPoint(hit.point);
+                Debug.Log(("We hit" + hit.collider.name + " " + hit.point));
                 //StopFocusing();
                 //stop focusing on any objects
             }
@@ -212,7 +212,7 @@ public class PlayerController : MonoBehaviour
 	void FixedUpdate()
 	{
 		//set the rigidbodys velocity to the player velocity
-		rb.velocity = playerVelocity;
+		//rb.velocity = playerVelocity;
 
 		//controls encounter zone stuff
 		currentPosition = transform.position;

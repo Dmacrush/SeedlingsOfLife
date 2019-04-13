@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         soundevent = FMODUnity.RuntimeManager.CreateInstance(selectsound);
-
+        
     }
 
     void Awake()
@@ -68,11 +68,13 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this);
         if(!GameObject.Find("Player"))
         {
+            
             GameObject player = Instantiate(playerCharacter, nextPlayerPosition, Quaternion.identity) as GameObject;
             player.name = "Player";
         }
         canBattle = true;
         partyManager = GetComponent<PartyManager>();
+        
     }
 
     private void Update()
