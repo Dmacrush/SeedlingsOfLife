@@ -24,6 +24,7 @@ MonoBehaviour:
   - {fileID: 114172946913655194}
   - {fileID: 114658376574434298}
   - {fileID: 114674655163362182}
+  - {fileID: 114985809328469770}
   EditorEvents:
   - {fileID: 114116632855308678}
   - {fileID: 114874454945601416}
@@ -119,11 +120,16 @@ MonoBehaviour:
   - {fileID: 114567614534579868}
   - {fileID: 114080806626101348}
   - {fileID: 114812621582019458}
+  - {fileID: 114312369862282304}
+  - {fileID: 114067056110411932}
+  - {fileID: 114510340163536388}
+  - {fileID: 114263890069497018}
+  - {fileID: 114741065969434138}
   MasterBanks:
   - {fileID: 114664729078626916}
   StringsBanks:
   - {fileID: 114192371798520188}
-  stringsBankWriteTime: 636906066406104352
+  stringsBankWriteTime: 636906695265852248
   cacheVersion: 3
 --- !u!114 &114002758460037934
 MonoBehaviour:
@@ -299,12 +305,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\cancer\SeedlingsOfLife\SOLFMOD\Build\Desktop\Stage.bank
-  lastModified: 636906066468146472
+  lastModified: 636906695276080321
   LoadResult: 0
   FileSizes:
   - Name: Desktop
     Value: 450
   Exists: 1
+--- !u!114 &114067056110411932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience_Cloud
+  guid: 1f2960367acfab44be6dc24b9ff45d5d
+  Banks:
+  - {fileID: 114985809328469770}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 176128
 --- !u!114 &114080657035938344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,7 +471,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 209
+  Length: 0
 --- !u!114 &114151710798957084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -525,7 +554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\cancer\SeedlingsOfLife\SOLFMOD\Build\Desktop\Atmos.bank
-  lastModified: 636906066407585540
+  lastModified: 636906695268455367
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -544,7 +573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\cancer\SeedlingsOfLife\SOLFMOD\Build\Desktop\Wheel.bank
-  lastModified: 636906066468404862
+  lastModified: 636906695276499209
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -563,7 +592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\cancer\SeedlingsOfLife\SOLFMOD\Build\Desktop\Combat.bank
-  lastModified: 636906066408144066
+  lastModified: 636906695270170700
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -628,11 +657,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: SOLFMOD\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636906066406104352
+  lastModified: 636906695265852248
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 5108
+    Value: 5370
   Exists: 1
 --- !u!114 &114230988647398562
 MonoBehaviour:
@@ -702,7 +731,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 538
+  Length: 508
 --- !u!114 &114255046022283290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -749,6 +778,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1028
+--- !u!114 &114263890069497018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience_Wind
+  guid: cfde261ad16ce54a9150e5fbf2c89271
+  Banks:
+  - {fileID: 114985809328469770}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 177493
 --- !u!114 &114298054124365570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -795,6 +847,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 137003
+--- !u!114 &114312369862282304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience_Plain
+  guid: 19118443c542884980631f14d4be0b6f
+  Banks:
+  - {fileID: 114985809328469770}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 153600
 --- !u!114 &114320597667269988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -977,7 +1052,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 8.2
   Length: 241975
 --- !u!114 &114415090733570556
 MonoBehaviour:
@@ -1255,6 +1330,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 683
+--- !u!114 &114510340163536388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience_Plain Chime
+  guid: 68169323a5381a4391c5b93aabdde90a
+  Banks:
+  - {fileID: 114985809328469770}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 153600
 --- !u!114 &114534091377225596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1590,11 +1688,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\cancer\SeedlingsOfLife\SOLFMOD\Build\Desktop\Menu.bank
-  lastModified: 636906066466100942
+  lastModified: 636906695272589661
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 2484416
+    Value: 2476608
   Exists: 1
 --- !u!114 &114630635840141348
 MonoBehaviour:
@@ -1655,7 +1753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\cancer\SeedlingsOfLife\SOLFMOD\Build\Desktop\Movement.bank
-  lastModified: 636906066467128288
+  lastModified: 636906695274484585
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -1720,7 +1818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\cancer\SeedlingsOfLife\SOLFMOD\Build\Desktop\Master Bank.bank
-  lastModified: 636906066405994694
+  lastModified: 636906695265772497
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -1739,7 +1837,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\cancer\SeedlingsOfLife\SOLFMOD\Build\Desktop\Music.bank
-  lastModified: 636906066467786532
+  lastModified: 636906695275382271
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -1837,6 +1935,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2240
+--- !u!114 &114741065969434138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Ambience_Birds_Insects
+  guid: f494e72847ec9f44808768a5cc2b4838
+  Banks:
+  - {fileID: 114985809328469770}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 195242
 --- !u!114 &114745044131428906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1850,7 +1971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\cancer\SeedlingsOfLife\SOLFMOD\Build\Desktop\Planting.bank
-  lastModified: 636906066468086628
+  lastModified: 636906695276030452
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -2056,6 +2177,7 @@ MonoBehaviour:
   guid: a54e8669f6ec2b4ca4b01f202d86d88b
   Banks:
   - {fileID: 114620717662018898}
+  - {fileID: 114985809328469770}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -2421,7 +2543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\cancer\SeedlingsOfLife\SOLFMOD\Build\Desktop\Inventory.bank
-  lastModified: 636906066408622790
+  lastModified: 636906695271043561
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -2496,6 +2618,25 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 610
+--- !u!114 &114985809328469770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: D:\cancer\SeedlingsOfLife\SOLFMOD\Build\Desktop\Ambience.bank
+  lastModified: 636906695352427279
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 12715936
+  Exists: 1
 --- !u!114 &114990683084323138
 MonoBehaviour:
   m_ObjectHideFlags: 0
