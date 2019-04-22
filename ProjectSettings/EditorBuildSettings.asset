@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/OverWorld.unity
     guid: 54f74c3836621da44bd70eddc0b26006
   - enabled: 1
-    path: Assets/Scenes/BattleLevel.unity
+    path: Assets/Scenes/BattleLevelHalfDead.unity
     guid: 12f44e57616766046a7f196d4a8c4936
   - enabled: 1
     path: Assets/Scenes/BattleLevel 1.unity
