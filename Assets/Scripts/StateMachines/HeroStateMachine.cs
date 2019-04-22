@@ -5,14 +5,7 @@ using UnityEngine.UI;
 
 public class HeroStateMachine : MonoBehaviour
 {
-    [FMODUnity.EventRef]
-    public string dead;
-    [FMODUnity.EventRef]
-    public string hurt;
-    FMOD.Studio.EventInstance death;
-    FMOD.Studio.EventInstance ouch;
-
-    private BattleStateMachine BSM;
+	private BattleStateMachine BSM;
 
 	//Reference to the BaseStats Class
 	public BaseStats heroStats;
@@ -73,10 +66,8 @@ public class HeroStateMachine : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-        death = FMODUnity.RuntimeManager.CreateInstance(dead);
-        ouch = FMODUnity.RuntimeManager.CreateInstance(hurt);
-        //find the spacer object in the scene
-        heroPanelSpacer = GameObject.Find("BattleCanvas").transform.Find("HeroPanel").transform.Find("HeroPanelSpacer");
+		//find the spacer object in the scene
+		heroPanelSpacer = GameObject.Find("BattleCanvas").transform.Find("HeroPanel").transform.Find("HeroPanelSpacer");
 		//create the panel and fill it with info with the corresponding hero stats
 		CreateHeroPanel();
 
@@ -249,14 +240,12 @@ public class HeroStateMachine : MonoBehaviour
 
 	public void TakeDamage(float getDamageAmount)
 	{
-        //apply the damage to the hero based on the getDamageAmount
-        heroStats.Health -= getDamageAmount - heroStats.Defense;
+		//apply the damage to the hero based on the getDamageAmount
+		heroStats.Health -= getDamageAmount / heroStats.Defense;
 		//check if the current hero is dead
 		if (heroStats.Health <= 0)
 		{
-            FMODUnity.RuntimeManager.AttachInstanceToGameObject(death, GetComponent<Transform>(), GetComponent<Rigidbody>());
-            death.start();
-            heroStats.Health = 0;
+			heroStats.Health = 0;
 			currentState = TurnState.DEATH;
 		}
 		UpdateHeroPanel();
@@ -265,10 +254,8 @@ public class HeroStateMachine : MonoBehaviour
 	//Do Damage function
 	void DoDamage()
 	{
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(ouch, GetComponent<Transform>(), GetComponent<Rigidbody>());
-        ouch.start();
-        //Calculate the damage that the hero will do from the battle state machine/ chosen attack command + the attack damage
-        float calc_Damage = heroStats.Strength + BSM.PerformList[0].chosenAttack.attackDamage;
+		//Calculate the damage that the hero will do from the battle state machine/ chosen attack command + the attack damage
+		float calc_Damage = heroStats.Strength + BSM.PerformList[0].chosenAttack.attackDamage;
 		//get the enemy that has been attacked, call the take damage function from the Enemy State Machine and input the damage based on the calc_damage from the Hero
 		EnemyToAttack.GetComponent<EnemyStateMachine>().TakeDamage(calc_Damage);
 	}

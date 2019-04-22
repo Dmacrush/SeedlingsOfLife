@@ -11,6 +11,13 @@ TagManager:
   - Fire
   - Overlap
   - EncounterZone
+  - Seed
+  - Gumnut
+  - Teatree
+  - Lily
+  - Orchid
+  - Vine
+  - Fungi
   layers:
   - Default
   - TransparentFX

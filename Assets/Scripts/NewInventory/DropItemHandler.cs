@@ -18,7 +18,8 @@ public class DropItemHandler : MonoBehaviour, IDropHandler
 			{
 				theInventory.RemoveItem(item);
 				item.OnDrop(item);
-				item.OnGrow(item);
+				item.GetComponent<GrowTree>().isPlanted = true;
+				item.GetComponent<GrowTree>().GrowThePlant();
 				Debug.Log("we dropped" + item.Name);
 
 			}

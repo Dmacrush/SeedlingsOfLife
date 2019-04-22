@@ -97,10 +97,13 @@ public class BattleStateMachine : MonoBehaviour
     public List<Transform> spawnPoints = new List<Transform>();
 	public List<Transform> spawnPointsPlayer = new List<Transform>();
 
-	public BaseStats theBaseStats;
+	
+
+	//static public BattleStateMachine BSM;
 
     private void Awake()
-    {
+	{
+		//BSM = this;
         for(int i = 0; i < GameManager.instance.enemyAmount; i++)
         {
             GameObject NewEnemy = Instantiate(GameManager.instance.enemiesToBattle[i],spawnPoints[i].position,Quaternion.identity) as GameObject;
@@ -157,8 +160,10 @@ public class BattleStateMachine : MonoBehaviour
 
 
 			case (PerformAction.TAKEACTION):
+				
 				//Find the first game object in the list of attackers by name.
 				GameObject performer = GameObject.Find(PerformList[0].Attacker);
+				PerformList[0].Attacker = FindObjectOfType<BaseStats>().theName;
 				//Check if the attacker is of the type Enemy
 				if (PerformList[0].Type == "Enemy")
 				{
@@ -191,7 +196,7 @@ public class BattleStateMachine : MonoBehaviour
 				{
 					//Get the hero state machine component
 					HeroStateMachine HSM = performer.GetComponent<HeroStateMachine>();
-					//Add the enemy to attack to the list of performers based on thetargeted enemy
+					//Add the enemy to attack to the list of performers based on the targeted enemy
 					HSM.EnemyToAttack = PerformList[0].AttackersTarget;
 
 					//Set the current state in the hero state machine to action

@@ -94,6 +94,7 @@ public class NewInventory : MonoBehaviour
 
 				break;
 			}
+
 		}
 
 		
@@ -105,8 +106,16 @@ public class NewInventory : MonoBehaviour
 		{
 			ItemUsed(this, new InventoryEventArgs(item));
 		}
-
+		//call the onuse function the selected item
 		item.OnUse();
+		//check if the items tag == Seed
+		if (item.CompareTag("Gumnut") || item.CompareTag("Teatree") || item.CompareTag("Vine") || item.CompareTag("Fungi") || item.CompareTag("Lily") || item.CompareTag("Orchid"))
+		{
+			//call remove item once used
+			RemoveItem(item);
+		}
+		
+		
 	}
 }
 

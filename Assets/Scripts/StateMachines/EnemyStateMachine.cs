@@ -5,16 +5,10 @@ using UnityEngine.UI;
 
 public class EnemyStateMachine : MonoBehaviour
 {
-    [FMODUnity.EventRef]
-    public string dead;
-    [FMODUnity.EventRef]
-    public string hurt;
-    FMOD.Studio.EventInstance death;
-    FMOD.Studio.EventInstance ouch;
-
-
-    private BattleStateMachine BSM;
+	private BattleStateMachine BSM;
 	public BaseStats enemyStats;
+
+	public Text enemyHealthText;
 
 	//Enum Declaration
 	public enum TurnState
@@ -58,10 +52,9 @@ public class EnemyStateMachine : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-        death = FMODUnity.RuntimeManager.CreateInstance(dead);
-        ouch = FMODUnity.RuntimeManager.CreateInstance(hurt);
-        //Set the current state to PROCESSING. 
-        currentState = TurnState.PROCESSING;
+		enemyHealthText.text = enemyStats.Health.ToString("F0");
+		//Set the current state to PROCESSING. 
+		currentState = TurnState.PROCESSING;
 		//set the current selector to false
 		Selector.SetActive(false);
 		//Find the battle manager then get the battle state machine component
@@ -143,7 +136,7 @@ public class EnemyStateMachine : MonoBehaviour
 	void UpdateProgressBar()
 	{
 		//Add to the current cooldown based on the time that has past until it reaches the maximum cooldown time
-		currentCoolDown = currentCoolDown + Time.deltaTime;
+		currentCoolDown = currentCoolDown + Time.deltaTime ;
 		//check if the current cooldown is greater than or equal to the max cooldown then...change the current state to ADDTOLIST
 		if (currentCoolDown >= maximumCoolDown)
 		{
@@ -224,26 +217,23 @@ public class EnemyStateMachine : MonoBehaviour
 
 	void DoDamage()
 	{
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(ouch, GetComponent<Transform>(), GetComponent<Rigidbody>());
-        ouch.start();
-        //add the enemies current attack to the chosen attack, when its added to the perform action list.
-        float calc_damage = enemyStats.Strength + BSM.PerformList[0].chosenAttack.attackDamage;
+		//add the enemies current attack to the chosen attack, when its added to the perform action list.
+		float calc_damage = enemyStats.Strength + BSM.PerformList[0].chosenAttack.attackDamage;
 		//Apply the damage to the hero that has been attacked based on the calc damage
 		HeroToAttack.GetComponent<HeroStateMachine>().TakeDamage(calc_damage);
+		//
+		enemyHealthText.text = enemyStats.Health.ToString("F0");
 	}
 
 	public void TakeDamage(float getDamageAmount) // Enemy takes damage from the hero
 	{
-
-        //Take the inputted damage from the enemies hp
-        enemyStats.Health -= getDamageAmount - enemyStats.Defense;
+		//Take the inputted damage from the enemies hp
+		enemyStats.Health -= getDamageAmount / enemyStats.Defense;
 		//Check if it the enemies current HP is less than equal to 0
 		if (enemyStats.Health <= 0)
 		{
-            FMODUnity.RuntimeManager.AttachInstanceToGameObject(death, GetComponent<Transform>(), GetComponent<Rigidbody>());
-            death.start();
-            //Set the enemys hp to 0
-            enemyStats.Health = 0;
+			//Set the enemys hp to 0
+			enemyStats.Health = 0;
 			//Set the enemies turn state to DEATH.
 			currentState = TurnState.DEATH;
 		}
