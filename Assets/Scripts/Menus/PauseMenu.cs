@@ -5,15 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    //fmod stuff
     [FMODUnity.EventRef]
     public string selectsound;
     FMOD.Studio.EventInstance soundevent;
 
+    //pause menu holder
     public GameObject PauseMenuHolder;
     public static bool GameIsPaused = false;
 
     private void Update()
     {
+        //if escape is pressed display pause menu
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             FMODUnity.RuntimeManager.AttachInstanceToGameObject(soundevent, GetComponent<Transform>(), GetComponent<Rigidbody>());
@@ -35,6 +38,7 @@ public class PauseMenu : MonoBehaviour
         soundevent = FMODUnity.RuntimeManager.CreateInstance(selectsound);
     }
 
+    //pause game
     public void PauseGame()
     {
         Time.timeScale = 0f;
@@ -43,6 +47,7 @@ public class PauseMenu : MonoBehaviour
         
     }
 
+    //resume game
     public void Resume()
     {
         Time.timeScale = 1f;
@@ -50,6 +55,7 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
     }
 
+    //load main menu
     public void MainMenu()
     {
         Time.timeScale = 1f;

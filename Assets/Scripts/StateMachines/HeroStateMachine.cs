@@ -228,16 +228,19 @@ public class HeroStateMachine : MonoBehaviour
 		
 	}
 
+    //moves player to enemy, affects visuals not gameplay
 	private bool MoveTowardsEnemy(Vector3 target)
 	{
 		return target != (transform.position = Vector3.MoveTowards(transform.position, target, animSpeed * Time.deltaTime));
 	}
 
+    //moves back to original position before moving towards enemy
 	private bool MoveTowardsInitialPosition(Vector3 target)
 	{
 		return target != (transform.position = Vector3.MoveTowards(transform.position, target, animSpeed * Time.deltaTime));
 	}
 
+    //does damage to enemy when they move next to them
 	public void TakeDamage(float getDamageAmount)
 	{
 		//apply the damage to the hero based on the getDamageAmount

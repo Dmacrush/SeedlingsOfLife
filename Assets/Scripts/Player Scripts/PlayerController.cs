@@ -142,6 +142,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
+    //early prototype of player needing tools to plant and harvest
 	public bool HasTool
 	{
 		get
@@ -154,6 +155,9 @@ public class PlayerController : MonoBehaviour
 			return myCurrentItem.ItemType == EItemType.Tool;
 		}
 	}
+
+    //allows player to equip tools
+    //early prototype
 	private void SetItemActive(InventoryItemBase item, bool active)
 	{
 		GameObject currentItem = (item as MonoBehaviour).gameObject;
@@ -179,6 +183,7 @@ public class PlayerController : MonoBehaviour
 
 		myCurrentItem = e.Item;
 	}
+
 
 	public void ThrowCurrentItem()
 	{

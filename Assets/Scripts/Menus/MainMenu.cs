@@ -6,20 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-
+    //menu holders
     public GameObject playMenuHolder;
-    
     public GameObject optionsMenuHolder;
     public GameObject quitHolder;
     
+    //options stuff
     public Slider[] volumeSliders;
     public Toggle[] resolutionToggles;
     public Toggle fullScreenToggle;
     public int[] screenWidths;
 
+    //scene management
     int activeScreenResIndex;
 
-    LevelScript levelScript;
+    
 
     private void Start()
     {
@@ -27,15 +28,8 @@ public class MainMenu : MonoBehaviour
         optionsMenuHolder.SetActive(false);
         quitHolder.SetActive(false);
 
-        levelScript = FindObjectOfType<LevelScript>();
         activeScreenResIndex = PlayerPrefs.GetInt("screen res index");
         bool isFullscreen = (PlayerPrefs.GetInt("fullscreen") == 1 ? true : false);
-
-        volumeSliders[0].value = AudioManager.instance.MasterVolumePercent;
-
-        volumeSliders[0].value = AudioManager.instance.MasterVolumePercent;
-        volumeSliders[1].value = AudioManager.instance.MusicVolumePercent;
-        volumeSliders[2].value = AudioManager.instance.SfxVolumePercent;
 
         for (int i = 0; i < resolutionToggles.Length; i++)
         {
@@ -46,6 +40,7 @@ public class MainMenu : MonoBehaviour
         fullScreenToggle.isOn = isFullscreen;
     }
     
+    //displays play menu
     public void DisplayPlayMenu()
     {
         playMenuHolder.SetActive(true);
@@ -54,6 +49,7 @@ public class MainMenu : MonoBehaviour
        
     }
 
+    //display quit menu
     public void DisplayQuitMenu()
     {
         playMenuHolder.SetActive(false);
@@ -62,6 +58,7 @@ public class MainMenu : MonoBehaviour
        
     }
 
+    //display options menu
     public void DisPlayOptionsMenu()
     {
         playMenuHolder.SetActive(false);
@@ -70,11 +67,13 @@ public class MainMenu : MonoBehaviour
        
     }
 
+    //quit game
     public void Quit()
     {
         Application.Quit();
     }
     
+    //set resoultions in options menu
     public void SetScreenResolution(int i)
     {
         if (resolutionToggles[i].isOn)
@@ -87,6 +86,7 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    //toggle fullscreen
     public void SetFullscreen(bool isFullscreen)
     {
         for (int i = 0; i < resolutionToggles.Length; i++)
@@ -109,21 +109,7 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    public void SetMasterVolume(float value)
-    {
-        AudioManager.instance.SetVolume(value, AudioManager.AudioChannel.Master);
-    }
-
-    public void SetMusicVolume(float value)
-    {
-        AudioManager.instance.SetVolume(value, AudioManager.AudioChannel.Music);
-    }
-
-    public void SetSFXVolume(float value)
-    {
-        AudioManager.instance.SetVolume(value, AudioManager.AudioChannel.Sfx);
-    }
-
+    //load game
     public void LoadOverWorld()
     {
         SceneManager.LoadScene("OverWorld");

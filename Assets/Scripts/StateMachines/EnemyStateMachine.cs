@@ -205,16 +205,19 @@ public class EnemyStateMachine : MonoBehaviour
 		//set the current state to turn state.PROCESSING
 		currentState = TurnState.PROCESSING;
 	}
-
+    //moves enemy to player when attacking
 	private bool MoveTowardsEnemy(Vector3 target)
 	{
 		return target != (transform.position = Vector3.MoveTowards(transform.position, target, animSpeed * Time.deltaTime));
 	}
+
+    //moves enemy back after they have attacked
 	private bool MoveTowardsInitialPosition(Vector3 target)
 	{
 		return target != (transform.position = Vector3.MoveTowards(transform.position, target, animSpeed * Time.deltaTime));
 	}
 
+    //do damage to player
 	void DoDamage()
 	{
 		//add the enemies current attack to the chosen attack, when its added to the perform action list.
@@ -225,6 +228,7 @@ public class EnemyStateMachine : MonoBehaviour
 		enemyHealthText.text = enemyStats.Health.ToString("F0");
 	}
 
+    //take damage from player
 	public void TakeDamage(float getDamageAmount) // Enemy takes damage from the hero
 	{
 		//Take the inputted damage from the enemies hp

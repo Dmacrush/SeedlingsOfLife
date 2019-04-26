@@ -11,27 +11,34 @@ public class GameManager : MonoBehaviour
     public string selectsound;
     FMOD.Studio.EventInstance soundevent;
 
-
+    //makes gamemanager a singleton because it is carried over every scene
     public static GameManager instance;
 
+    //reference to party manager
     private PartyManager partyManager;
+
 
     public RegionData currentRegion;
     public GameObject playerCharacter;
 
+    //determines the location in which the player should be spawned when they exit battle
     public Vector3 nextPlayerPosition;
     public Vector3 lastPlayerPosition; //before battle
 
+    //scenes to load
     public string sceneToLoad;
     public string lastScene; //before battle
 
+    //bools that affecct gameplay
     public bool isWalking = false;
     public bool canEncounter = false;
     public bool gotAttacked = false;
     public bool canBattle = true;
 
+    //used to count
     public int counter;
 
+    //the states for the world
     public enum GameStates
     {
         WORLD_STATE,
@@ -39,12 +46,12 @@ public class GameManager : MonoBehaviour
         IDLE
     }
 
+    //used for the battle state machine
     public int enemyAmount;
-
     public List<GameObject> enemiesToBattle = new List<GameObject>();
 
+    //used in party manager
     public int playerAmount;
-
     public List<GameObject> playersToBattle = new List<GameObject>();
 
 	public GameStates gameState;
@@ -57,6 +64,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        //singleton stuff
         if(instance == null)
         {
             instance = this;
@@ -66,12 +74,15 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(this);
-        if(!GameObject.Find("Player"))
+
+        //spawns player in the last location they exited the level
+        if (!GameObject.Find("Player"))
         {
             
             GameObject player = Instantiate(playerCharacter, nextPlayerPosition, Quaternion.identity) as GameObject;
             player.name = "Player";
         }
+        //makes sure the player can battle things if they need to
         canBattle = true;
         partyManager = GetComponent<PartyManager>();
         
@@ -79,8 +90,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        //the states of the overworld
         switch(gameState)
         {
+            //used when walking around in the overworld
             case (GameStates.WORLD_STATE):
                 {
                     
@@ -95,6 +108,7 @@ public class GameManager : MonoBehaviour
                     break;
                     
                 }
+                //used to switch over to the battle scene
             case (GameStates.BATTLE_STATE):
                 {
                     //Load Battle Scene
@@ -102,6 +116,7 @@ public class GameManager : MonoBehaviour
                     gameState = GameStates.IDLE;
                     break;
                 }
+                //idle
             case (GameStates.IDLE):
                 {
                     break;
@@ -116,16 +131,19 @@ public class GameManager : MonoBehaviour
 
     }
 
+    //load next scene
     public void LoadNextScene()
     {
         SceneManager.LoadScene(sceneToLoad);
     }
 
+    //just loads overworld after battle
     public void LoadSceneAfterBattle()
     {
         SceneManager.LoadScene(lastScene);
     }
 
+    //just a dice throwing function that determines when u can battle things
     void RandomEncounter()
     {
         if(isWalking && canEncounter)
@@ -145,8 +163,10 @@ public class GameManager : MonoBehaviour
 		//enemy reference here
 		//amount of enemies
 		enemyAmount = Random.Range(1, currentRegion.maxAmountEnemies + 1);
+
         //which enemies
-        for(int i = 0; i < enemyAmount; i++)
+        //determines how many enemies need to going to the battle scene
+        for (int i = 0; i < enemyAmount; i++)
         {
             if (counter <= partyManager.maxPartyMembers)
             {
@@ -163,6 +183,7 @@ public class GameManager : MonoBehaviour
         //amount of players
         playerAmount = partyManager.maxPartyMembers;
         //which players
+        //determines how many players goes into the battle scene
         for (int i = 0; i < playerAmount; i++)
         {
             if(counter <= partyManager.maxPartyMembers)
@@ -177,11 +198,15 @@ public class GameManager : MonoBehaviour
             counter = 0;
         }
 
-
+        //saves player location for them to be spawned in at later
         lastPlayerPosition = GameObject.Find("Player").gameObject.transform.position;
         nextPlayerPosition = lastPlayerPosition;
+
+        //saves scene so the game knows what scene to load back to after a battle
         lastScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentRegion.BattleScene);
+
+        //just ensures that the encounters are reset and the player can go into battle again
         isWalking = false;
         gotAttacked = false;
         canEncounter = false;

@@ -79,6 +79,7 @@ public class InventoryItemBase : InteractableItemBase
             gameObject.SetActive(true);
             //set the gameobjects position to the hit point of the mouse pointer
             gameObject.transform.position = hit.point;
+            
             //see the gameobjects rotation to that of the defined rotation
             gameObject.transform.eulerAngles = DropRotation;
             //OnGrow(item);
